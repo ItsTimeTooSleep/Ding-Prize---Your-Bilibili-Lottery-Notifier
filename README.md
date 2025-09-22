@@ -1,4 +1,4 @@
-# Ding-Prize <img src="https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/raw/main/icons/icon16.png" width="80" alt="ICON">
+# Ding-Prize <img src="https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/raw/main/icons/icon128.png" width="80" alt="ICON">
 
 ![GitHub license](https://img.shields.io/github/license/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier?style=for-the-badge)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier?style=for-the-badge&label=Version)
