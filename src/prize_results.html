@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有中奖结果</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="prize_results.css"> <!-- 引入 prize_results.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                <h1>所有中奖结果</h1>
+            </div>
+        </div>
+        <div id="prize-details" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">
+            <!-- 详细信息将在这里动态加载 -->
+        </div>
+
+        <ul id="all-prize-messages-list" class="prize-list">
+            <!-- 所有中奖消息将在这里动态加载 -->
+        </ul>
+
+        <div id="no-prizes-message" class="no-prizes" style="display: none;">
+            <i class="fas fa-box-open"></i>
+            <p>暂无中奖消息。</p>
+        </div>
+
+        <button id="back-to-popup" class="back-button">返回</button>
+    </div>
+
+    <script src="prize_results.js"></script>
+  <div id="custom-confirm-dialog" class="custom-confirm-dialog">
+    <div class="custom-confirm-content">
+      <p id="custom-confirm-message"></p>
+      <div class="custom-confirm-buttons">
+        <button id="custom-confirm-ok" class="button">确认</button>
+        <button id="custom-confirm-cancel" class="button">取消</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

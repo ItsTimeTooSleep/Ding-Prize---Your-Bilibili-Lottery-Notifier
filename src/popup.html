@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ding-Prize</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://github.com/itstimetoosleep/Ding-Prize---Your-Bilibili-Lottery-Notifier" target="_blank" title="GitHub项目" class="header-link">
+                <div class="logo">
+                    <img src="../icons/icon48-white.png" alt="Gift icon" class="header-icon">
+                    <h1>Ding-Prize</h1>
+                </div>
+            </a>
+            <div class="subtitle">帮你盯紧海量私信，中奖通知一秒闪现！</div>
+        </div>
+
+        <div class="content">
+            <div class="status-card">
+                <span id="status-dot" class="status-indicator status-normal"></span>
+                <div>
+                    <div id="status-text" class="status-text">正常</div>
+                    <div class="last-checked">上次检测时间: <span id="last-checked-time">N/A</span></div>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <i class="fas fa-history"></i>
+                <span>最近检测结果</span>
+            </div>
+
+            <div id="recent-results" class="results-container">
+                <ul id="prize-messages-list">
+                    <!-- 中奖消息将在这里动态加载 -->
+                </ul>
+            </div>
+            <button id="view-all-prizes" class="view-all-button">查看更多</button>
+
+            <div class="buttons">
+                <button id="open-options">
+                    <i class="fas fa-cog"></i>
+                    <span>设置</span>
+                </button>
+                <button id="check-now">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>立即检测</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><img src="../icons/icon32.png"> Ding-Prize v0.1.0</p>
+        <div class="footer-links">
+            <a href="https://github.com/itstimetoosleep/Ding-Prize---Your-Bilibili-Lottery-Notifier" target="_blank" title="GitHub项目"><i class="fab fa-github"></i></a>
+            <a href="https://afdian.net/itstimetoosleep" target="_blank" title="爱发电赞助"><i class="fas fa-heart"></i></a>
+            <a href="https://space.bilibili.com/3546761664661567" target="_blank" title="ItsTimeTooSleep的Bilibili空间"><i class="fab fa-bilibili"></i></a>
+        </div>
+<p class="copyright">© 2025 ItsTimeTooSleep. All rights reserved.<br>Licensed under the <a href="../LICENSE.txt">MIT License</a>.</p>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <span id="notification-text"></span>
+    </div>
+
+    <script src="popup.js" type="module"></script>
+
+    <!-- Custom Confirmation Dialog -->
+    <div id="custom-confirm-dialog" class="custom-confirm-dialog">
+        <div class="custom-confirm-content">
+            <p id="custom-confirm-message"></p>
+            <div class="custom-confirm-buttons">
+                <button id="custom-confirm-ok" class="button">确认</button>
+                <button id="custom-confirm-cancel" class="button">取消</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

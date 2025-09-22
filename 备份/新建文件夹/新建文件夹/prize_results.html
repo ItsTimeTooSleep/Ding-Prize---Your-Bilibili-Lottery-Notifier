@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有中奖结果</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            min-height: 100%; /* 确保最小高度 */
+            margin: 0;
+            /* overflow: hidden; */ /* 防止滚动条出现 */
+        }
+        body {
+            padding: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            /* min-width: 300px; */ /* 移除最小宽度 */
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex-grow: 1; /* 允许容器填充可用空间 */
+            overflow-y: auto; /* 允许垂直滚动 */
+            padding-right: 10px;
+            width: 100%; /* 确保容器宽度为100% */
+            max-width: none; /* 移除最大宽度限制 */
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+        .header .logo i {
+            font-size: 28px;
+            color: #00a1d6;
+            margin-right: 10px;
+        }
+        .header h1 {
+            font-size: 22px;
+            color: #333;
+            margin: 0;
+        }
+        .prize-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .prize-item {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .prize-item:hover {
+            transform: translateY(-3px);
+        }
+        .prize-item strong {
+            color: #00a1d6;
+        }
+        .prize-item p {
+            margin: 5px 0;
+            line-height: 2;
+        }
+        .prize-item .time {
+            font-size: 0.85em;
+            color: #888;
+            text-align: right;
+        }
+        .no-prizes {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #00a1d6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .back-button:hover {
+            background-color: #007bff;
+        }
+        .prize-item .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: flex-start; /* 左对齐 */
+        }
+        .prize-item .actions button {
+            flex: 0 0 180px !important; /* 使用 flex 属性确保固定宽度 */
+            width: 180px !important; /* 增加宽度并强制应用，使其更长 */
+            padding: 4px 12px !important; /* 调整垂直内边距，使其稍微高一点 */
+            height: 30px !important; /* 明确设置高度并强制应用，使其稍微高一点 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: inline-flex; /* 改为 inline-flex */
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+            min-width: 180px !important; /* 添加最小宽度 */
+            max-width: 180px !important; /* 添加最大宽度 */
+        }
+        .prize-item .actions .delete-button {
+            background-color: #dc3545;
+            color: white;
+        }
+        .prize-item .actions .delete-button:hover {
+            background-color: #c82333;
+        }
+        .prize-item .actions .copy-button {
+            background-color: #007bff;
+            color: white;
+        }
+        .prize-item .actions .copy-button:hover {
+            background-color: #0056b3;
+        }
+        .prize-item .actions button i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                <h1>所有中奖结果</h1>
+            </div>
+        </div>
+        <div id="prize-details" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">
+            <!-- 详细信息将在这里动态加载 -->
+        </div>
+
+        <ul id="all-prize-messages-list" class="prize-list">
+            <!-- 所有中奖消息将在这里动态加载 -->
+        </ul>
+
+        <div id="no-prizes-message" class="no-prizes" style="display: none;">
+            暂无中奖消息。
+        </div>
+
+        <button id="back-to-popup" class="back-button">返回</button>
+    </div>
+
+    <script src="prize_results.js"></script>
+  <div id="custom-confirm-dialog" class="custom-confirm-dialog">
+    <div class="custom-confirm-content">
+      <p id="custom-confirm-message"></p>
+      <div class="custom-confirm-buttons">
+        <button id="custom-confirm-ok" class="button">确认</button>
+        <button id="custom-confirm-cancel" class="button">取消</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

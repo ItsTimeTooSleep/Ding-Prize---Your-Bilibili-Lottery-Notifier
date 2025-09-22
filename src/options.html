@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ding-Prize 设置</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-cog"></i>
+                <h1>Ding-Prize 设置</h1>
+            </div>
+            <div class="subtitle">自定义您的专属欧气检测方案</div>
+        </div>
+
+        <div class="content">
+            <div class="setting-group fade-in">
+                <div class="setting-title">
+                    <i class="fas fa-power-off"></i>
+                    <span>插件开关</span>
+                </div>
+                <label class="switch-label">
+                    <div class="switch">
+                        <input type="checkbox" id="enabled-switch" checked>
+                        <span class="slider"></span>
+                    </div>
+                    启用插件
+                </label>
+                <div class="hint">关闭后插件将停止检测中奖信息</div>
+            </div>
+
+            <div class="setting-group fade-in" style="animation-delay: 0.1s;">
+                <div class="setting-title">
+                    <i class="fas fa-clock"></i>
+                    <span>检测设置</span>
+                </div>
+                <div class="input-group">
+                    <label for="check-interval">检测频率 (小时)</label>
+                    <input type="number" id="check-interval" min="1" max="168" value="24">
+                    <div class="hint">插件自动检测间隔 | 建议：24小时 (保持每日好运来~)</div>
+                </div>
+            </div>
+
+            <div class="setting-group fade-in" style="animation-delay: 0.2s;">
+                <div class="setting-title">
+                    <i class="fas fa-key"></i>
+                    <span>关键词设置</span>
+                </div>
+                <div class="input-group">
+                    <label for="prize-keywords">中奖关键词 (每行一个)</label>
+                    <textarea id="prize-keywords">中奖
+恭喜
+获奖
+抽奖
+填写地址
+收货地址
+奖品
+礼物</textarea>
+                    <div class="hint">插件将检测包含这些关键词的私信消息</div>
+                </div>
+            </div>
+
+            <div class="setting-group fade-in" style="animation-delay: 0.3s;">
+                <div class="setting-title">
+                    <i class="fas fa-ban"></i>
+                    <span>黑名单关键词 (每行一个)</span>
+                </div>
+                <div class="input-group">
+                    <label for="blacklist-keywords">黑名单关键词</label>
+                    <textarea id="blacklist-keywords"></textarea>
+                    <div class="hint">包含这些关键词的私信消息将被忽略，即使它们包含中奖关键词</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="save-settings">
+                    <i class="fas fa-save"></i>
+                    <span>保存设置</span>
+                </button>
+            </div>
+
+            <div id="status-message" class="status-message"></div>
+        </div>
+
+        <div class="footer">
+            <p> <img src="../icons/icon32.png"> Ding-Prize v0.1.0</p>
+            <div class="footer-links">
+                 <a href="https://github.com/itstimetoosleep/Ding-Prize---Your-Bilibili-Lottery-Notifier" target="_blank" title="GitHub项目"><i class="fab fa-github"></i></a>
+                 <a href="https://afdian.net/itstimetoosleep" target="_blank" title="爱发电赞助"><i class="fas fa-heart"></i></a>
+                 <a href="https://space.bilibili.com/3546761664661567" target="_blank" title="ItsTimeTooSleep的Bilibili空间"><i class="fab fa-bilibili"></i></a>
+             </div>
+            <p class="copyright">© 2025 ItsTimeTooSleep. All rights reserved. Licensed under the  <a href="../LICENSE.txt">MIT License</a>.</p>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>

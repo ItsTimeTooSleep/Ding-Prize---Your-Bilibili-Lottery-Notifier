@@ -1,0 +1,308 @@
+:root {
+  --bilibili-pink: #fb7299;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px; /* Adjust as needed for spacing between buttons */
+    margin-top: 10px;
+    align-items: center;
+    justify-content: flex-start; /* 左对齐 */
+}
+
+.actions button {
+    /* flex: 1; */ /* 移除 flex: 1 使按钮不占满宽度 */
+    width: 150px !important; /* 设置固定宽度，使其更长 */
+    padding: 2px 12px !important; /* 减小垂直内边距，使其更矮 */
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    height: 25px !important; /* 明确设置高度，使其更矮 */
+}
+
+.actions button i {
+    vertical-align: middle;
+    margin-right: 5px; /* Add some space between icon and text */
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+.copy-button {
+    background-color: #00a1d6;
+    color: white;
+    border: none;
+}
+
+.copy-button:hover {
+    background-color: #008cb3;
+}
+
+.custom-confirm-dialog {
+  display: none; /* 默认隐藏 */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.custom-confirm-dialog.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-confirm-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* 更深的阴影 */
+  text-align: center;
+  max-width: 350px;
+  width: 90%;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+  border: 1px solid #ccc; /* 添加边框 */
+}
+
+.custom-confirm-dialog.show .custom-confirm-content {
+  transform: translateY(0);
+}
+
+.custom-confirm-content p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold; /* 加粗文字 */
+}
+
+.custom-confirm-buttons .button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+}
+
+#custom-confirm-ok {
+  background-color: #dc3545; /* 红色，表示删除 */
+  color: white;
+}
+
+#custom-confirm-ok:hover {
+  background-color: #c82333;
+}
+
+#custom-confirm-cancel {
+  background-color: #6c757d; /* 灰色，表示取消 */
+  color: white;
+}
+
+#custom-confirm-cancel:hover {
+  background-color: #5a6268;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 100%; /* 确保最小高度 */
+    margin: 0;
+    /* overflow: hidden; */ /* 防止滚动条出现 */
+}
+body {
+    padding: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    /* min-width: 300px; */ /* 移除最小宽度 */
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    flex-grow: 1; /* 允许容器填充可用空间 */
+    overflow-y: auto; /* 允许垂直滚动 */
+    padding-right: 10px;
+    width: 100%; /* 确保容器宽度为100% */
+    max-width: none; /* 移除最大宽度限制 */
+}
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+.header .logo i {
+    font-size: 28px;
+    color: white;
+    margin-right: 10px;
+}
+.header h1 {
+    font-size: 22px;
+    color: white;
+    margin: 0;
+}
+.prize-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.prize-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative; /* For the pink line */
+    overflow: hidden; /* Ensures content stays within rounded corners */
+}
+.prize-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px; /* Pink line width */
+    background-color: var(--bilibili-pink); /* Using the Bilibili pink color */
+    border-radius: 8px 0 0 8px; /* Rounded corners only on the left */
+}
+
+.prize-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.prize-item.deleting {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.prize-item strong {
+    color: #00a1d6;
+}
+.prize-item p {
+    margin: 5px 0;
+    line-height: 2;
+}
+.prize-item .time {
+    font-size: 0.85em;
+    color: #888;
+    text-align: right;
+}
+.no-prizes {
+    text-align: center;
+    color: #666;
+    padding: 40px 20px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    border: 1px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
+
+.no-prizes i {
+    font-size: 3em;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.no-prizes p {
+    margin: 0;
+    color: #888;
+}
+
+.back-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #00a1d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+.back-button:hover {
+    background-color: #007bff;
+}
+.prize-item .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: flex-start; /* 左对齐 */
+}
+.prize-item .actions button {
+    flex: 0 0 180px !important; /* 使用 flex 属性确保固定宽度 */
+    width: 180px !important; /* 增加宽度并强制应用，使其更长 */
+    padding: 4px 12px !important; /* 调整垂直内边距，使其稍微高一点 */
+    height: 30px !important; /* 明确设置高度并强制应用，使其稍微高一点 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex; /* 改为 inline-flex */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    min-width: 180px !important; /* 添加最小宽度 */
+    max-width: 180px !important; /* 添加最大宽度 */
+}
+.prize-item .actions .delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+.prize-item .actions .delete-button:hover {
+    background-color: #c82333;
+}
+.prize-item .actions .copy-button {
+    background-color: #007bff;
+    color: white;
+}
+.prize-item .actions .copy-button:hover {
+    background-color: #0056b3;
+}
+.prize-item .actions button i {
+    margin-right: 5px;
+}
+.prize-thumb {
+        max-width: 150px; /* 限制图片最大宽度为150px */
+        height: auto; /* 高度自动，保持图片比例 */
+        display: block; /* 确保图片独占一行 */
+        margin-top: 10px; /* 图片上方留出一些间距 */
+        border-radius: 4px; /* 轻微圆角 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    }

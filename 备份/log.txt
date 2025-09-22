@@ -1,0 +1,416 @@
+手动触发B站私信检测...
+2background.js:98 开始检测B站私信...
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【超多大奖】🎁精选大奖合集🎁数万元奖品一次参与完！🎁【你的抽奖工具人】🎁","thumb":"http://i0.hdslb.com/bfs/archive/63cf8f7974ad1acc17470cc209bc142f2e888271.jpg","id":115241539147885,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖, 奖品
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【假抽奖实锤】“火花美学”假抽奖实锤，ps造假开奖截图！","thumb":"http://i1.hdslb.com/bfs/archive/382dafbf11fb50956f09859a966f84643a47c244.jpg","id":115241388082580,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【抽奖合集】🎁官方抽奖合集（全部版）🎁9.22——9.25开奖🎁","thumb":"http://i1.hdslb.com/bfs/archive/5f8ad9dff1427959049b480811901fac09873fa3.jpg","id":115241270648758,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.22——9.25开奖部分！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/95aef0381d4e9d9d754f9576b11c1c3a100680137.png","id":43113795,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.22——9.25开奖部分（全部版）！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/32c3bb7dc6f41f12144b11beb3662603100680137.png","id":43113732,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【临期/速看】⭐即将开奖的100➕抽奖⭐【抽奖合集】⭐","thumb":"http://i1.hdslb.com/bfs/archive/95c6f880a3bd4d3f278b0e596faf635ae164304f.jpg","id":115241002340403,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"无畏契约菜鸟互啄，电脑清内存留存个视频","thumb":"http://i0.hdslb.com/bfs/archive/e08ffe63cd7909e7e4030ebcac2563eabb459ac4.jpg","id":115239928531344,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.22、9.23、9.24开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/b0b38468e7f5632907872ea4f383289a100680137.png","id":43108053,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐❤️🎁b站抽奖看这里！🎁❤️⭐","thumb":"http://i1.hdslb.com/bfs/archive/d8c4cd064c6933d54aa2fd406d7469722513dcb3.jpg","id":115236791130714,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【最新】🎁非官方抽奖合集🎁【你的抽奖工具人】🎁","thumb":"http://i0.hdslb.com/bfs/archive/535382fd7a6309dcb8662dac835456d52633cdc8.jpg","id":115236740798550,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.20史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/2e3a62af1a229333eb5aa5ef435d279b100680137.png","id":43105805,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【超多大奖】🎁官方抽奖合集（精选大奖版）🎁评论区置顶传送门🎁","thumb":"http://i1.hdslb.com/bfs/archive/928d686b7cd550e70e02556fd4f70a61659256e2.jpg","id":115236136884257,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【官方抽奖合集】🎁（全部版）🎁超多超全的抽奖！🎁","thumb":"http://i0.hdslb.com/bfs/archive/566023e977dda91f8a015b2772df5ac268544c04.jpg","id":115236120041260,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.21、9.22、9.23开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/4fbdba89edef42f93449b46e2e80436f100680137.png","id":43103658,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.21、9.22、9.23开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/05f4170f7d3d8cc97268fef1b10e6c8b100680137.png","id":43103650,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【临期/速看】🎁即将开奖的93个抽奖🎁🎁评论区置顶传送门🎁","thumb":"http://i0.hdslb.com/bfs/archive/9b1e4c89c5491f220a12ade622e63f63b7af1489.jpg","id":115235180517263,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【假抽奖？还是运气爆棚？】争议事件难以评说，发个视频各抒己见。","thumb":"http://i1.hdslb.com/bfs/archive/bd15ebd3a82c60d7cf045da59bca5685196e1687.jpg","id":115235096630779,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.21、9.22、9.23开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/d355d01217e8b54c2e625d9e6be05188100680137.png","id":43098944,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"❤️🎁⭐b站抽奖看这里！⭐🎁❤️","thumb":"http://i2.hdslb.com/bfs/archive/8c1075799423b5443d370030ae5385903952fb54.jpg","id":115231288201326,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【最新抽奖合集】⭐超全、超多⭐互动抽奖、转发抽奖⭐","thumb":"http://i0.hdslb.com/bfs/archive/6630efa2aceb4ff02f73d8c9cd5c321f094bcb07.jpg","id":115231271425821,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.19史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/f92b6851fe7cf458ad37b8a9228b2388100680137.png","id":43097123,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【官方抽奖合集】⭐（精选大奖版）⭐超多大奖，等你参与⭐","thumb":"http://i2.hdslb.com/bfs/archive/ffb8176c69f15a75d183bea7b52107cd4ab148f4.jpg","id":115230147351928,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【互动抽奖】⭐官方抽奖合集（全部版）⭐评论区置顶传送门⭐","thumb":"http://i1.hdslb.com/bfs/archive/b4140003edbe88df5bbaa5d00ee0a2d5c1d19f64.jpg","id":115230113796252,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.20、9.21、9.22开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/b3c75c41fc29fb7480fe56c5272c7ddc100680137.png","id":43093395,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.20、9.21、9.22开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/37ce193c1d43583f0a1178817a3db77b100680137.png","id":43093342,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【临期/速看】⭐即将开奖的134个抽奖⭐【抽奖合集】⭐","thumb":"http://i2.hdslb.com/bfs/archive/10df49e7786ee4246bdb5f15ed8afbfc4ba42f4b.jpg","id":115229409155199,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.20、9.21、9.22开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/b92d6a95a873d73cfebd558be8eb6899100680137.png","id":43085220,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"❤️⭐🎁b站抽奖看这里！🎁⭐❤️","thumb":"http://i2.hdslb.com/bfs/archive/b1d48be500e0ebc4e51be56182861ab5ae51316a.jpg","id":115225718235131,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【最新】🎁抽奖合集🎁评论区置顶传送门🎁","thumb":"http://i0.hdslb.com/bfs/archive/b1822c80e90e710bd7feada180b6e01e6c008945.jpg","id":115225718168119,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.18史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/44a92d8061e6999ada3efbde49c40e51100680137.png","id":43084820,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【官方抽奖合集】🎁（精选大奖版）🎁超多大奖！🎁","thumb":"http://i1.hdslb.com/bfs/archive/e8ecbb25ce59412890e4f6aab3e0904ae503e94d.jpg","id":115224677981344,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【官方抽奖合集】🎁（全部版）🎁超全超多🎁","thumb":"http://i0.hdslb.com/bfs/archive/565a75bb0d24205f86a1a446936ee8c2f1296710.jpg","id":115224661204251,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.19、9.20、9.21开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/ddcca600b6ea694205a3dba99e7ddd0a100680137.png","id":43081667,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.19、9.20、9.21开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/0b8af5843a4e0636a00c114ae6851110100680137.png","id":43081643,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【即将开奖】🎁【临期/速看】抽奖合集🎁","thumb":"http://i2.hdslb.com/bfs/archive/481e73ca77720a3e78c4ab35110b63c10507712c.jpg","id":115223721680621,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.19、9.20、9.21开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/64517470430fadaf8a6fd5f6b306cd58100680137.png","id":43074836,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁❤️⭐b站抽奖看这里！⭐❤️🎁","thumb":"http://i2.hdslb.com/bfs/archive/fa9bce48ca456367ffcbbe241d976d6c72915a97.jpg","id":115220081023942,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【最新】⭐抽奖合集⭐评论区置顶传送门⭐","thumb":"http://i1.hdslb.com/bfs/archive/d450d2739718afca4d9aeee34793fb7f49ad0a2c.jpg","id":115220064243782,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.17史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/72cdaef7e6cdbfaa8c07b923e4074a1c100680137.png","id":43073443,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【官方抽奖合集】⭐（精选大奖版）⭐上万元大奖等你参加！⭐","thumb":"http://i1.hdslb.com/bfs/archive/4d6003f62b3c00f3a970b672ac82793c9a0b5b1a.jpg","id":115218889906153,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐官方抽奖合集（全部版）⭐超多超全合集⭐","thumb":"http://i0.hdslb.com/bfs/archive/a514c24c3d0c27a59e1a6e829ae31b6ad85bb6b2.jpg","id":115218839639960,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.18、9.19、9.20开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/561550e727c39f60ad22d55b9b59dc14100680137.png","id":43070918,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.18、9.19、9.20开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/0a5c416d745223e9f9a3bbef917b16df100680137.png","id":43070770,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【即将开奖】⭐【临期/速看】⭐超多抽奖⭐抽奖合集⭐1","thumb":"http://i0.hdslb.com/bfs/archive/63c27f899b76ab369177c47f24f4dbe7b852ade6.jpg","id":115218420078898,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"假抽奖的骗子“科技阁”，摇身一变成了黄标十万粉的大UP？官方你可涨点心吧!","thumb":"http://i0.hdslb.com/bfs/archive/b9ab572e3afa4393f6d019e3da2c1cf5cae858b4.jpg","id":115218185194525,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.18、9.19、9.20开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/1e07f90837bbc0de94f35fea28376165100680137.png","id":43062519,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【最新】🎁抽奖合集🎁评论区置顶传送门🎁","thumb":"http://i2.hdslb.com/bfs/archive/7770e5b9dd08fe9cce534a07067ce33d2fce4e30.jpg","id":115214091689848,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐🎁❤️b站抽奖看这里！❤️🎁⭐","thumb":"http://i1.hdslb.com/bfs/archive/7508557a8367d07497311da61d05a27f8345bc38.jpg","id":115214091687881,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.16史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/887e32a4a2cb37bb98594f76e5eb8046100680137.png","id":43061236,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【超多大奖】🎁官方抽奖合集（精选大奖版）🎁","thumb":"http://i1.hdslb.com/bfs/archive/bb4f1117bcf56c89357ec1196aefba937f733c45.jpg","id":115213185585903,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"content":"恭喜你在我发起的抽奖直播预约：《狮届抽象》中获得了8.8🧧"}" matched by keywords: 恭喜, 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【超多大奖】🎁精选大奖合集🎁数万元奖品一次参与完！🎁【你的抽奖工具人】🎁","thumb":"http://i0.hdslb.com/bfs/archive/63cf8f7974ad1acc17470cc209bc142f2e888271.jpg","id":115241539147885,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖, 奖品
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【假抽奖实锤】“火花美学”假抽奖实锤，ps造假开奖截图！","thumb":"http://i1.hdslb.com/bfs/archive/382dafbf11fb50956f09859a966f84643a47c244.jpg","id":115241388082580,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【抽奖合集】🎁官方抽奖合集（全部版）🎁9.22——9.25开奖🎁","thumb":"http://i1.hdslb.com/bfs/archive/5f8ad9dff1427959049b480811901fac09873fa3.jpg","id":115241270648758,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.22——9.25开奖部分！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/95aef0381d4e9d9d754f9576b11c1c3a100680137.png","id":43113795,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.22——9.25开奖部分（全部版）！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/32c3bb7dc6f41f12144b11beb3662603100680137.png","id":43113732,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【临期/速看】⭐即将开奖的100➕抽奖⭐【抽奖合集】⭐","thumb":"http://i1.hdslb.com/bfs/archive/95c6f880a3bd4d3f278b0e596faf635ae164304f.jpg","id":115241002340403,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"无畏契约菜鸟互啄，电脑清内存留存个视频","thumb":"http://i0.hdslb.com/bfs/archive/e08ffe63cd7909e7e4030ebcac2563eabb459ac4.jpg","id":115239928531344,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.22、9.23、9.24开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/b0b38468e7f5632907872ea4f383289a100680137.png","id":43108053,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐❤️🎁b站抽奖看这里！🎁❤️⭐","thumb":"http://i1.hdslb.com/bfs/archive/d8c4cd064c6933d54aa2fd406d7469722513dcb3.jpg","id":115236791130714,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【最新】🎁非官方抽奖合集🎁【你的抽奖工具人】🎁","thumb":"http://i0.hdslb.com/bfs/archive/535382fd7a6309dcb8662dac835456d52633cdc8.jpg","id":115236740798550,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.20史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/2e3a62af1a229333eb5aa5ef435d279b100680137.png","id":43105805,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【超多大奖】🎁官方抽奖合集（精选大奖版）🎁评论区置顶传送门🎁","thumb":"http://i1.hdslb.com/bfs/archive/928d686b7cd550e70e02556fd4f70a61659256e2.jpg","id":115236136884257,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【官方抽奖合集】🎁（全部版）🎁超多超全的抽奖！🎁","thumb":"http://i0.hdslb.com/bfs/archive/566023e977dda91f8a015b2772df5ac268544c04.jpg","id":115236120041260,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.21、9.22、9.23开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/4fbdba89edef42f93449b46e2e80436f100680137.png","id":43103658,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.21、9.22、9.23开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/05f4170f7d3d8cc97268fef1b10e6c8b100680137.png","id":43103650,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【临期/速看】🎁即将开奖的93个抽奖🎁🎁评论区置顶传送门🎁","thumb":"http://i0.hdslb.com/bfs/archive/9b1e4c89c5491f220a12ade622e63f63b7af1489.jpg","id":115235180517263,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【假抽奖？还是运气爆棚？】争议事件难以评说，发个视频各抒己见。","thumb":"http://i1.hdslb.com/bfs/archive/bd15ebd3a82c60d7cf045da59bca5685196e1687.jpg","id":115235096630779,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.21、9.22、9.23开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/d355d01217e8b54c2e625d9e6be05188100680137.png","id":43098944,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"❤️🎁⭐b站抽奖看这里！⭐🎁❤️","thumb":"http://i2.hdslb.com/bfs/archive/8c1075799423b5443d370030ae5385903952fb54.jpg","id":115231288201326,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【最新抽奖合集】⭐超全、超多⭐互动抽奖、转发抽奖⭐","thumb":"http://i0.hdslb.com/bfs/archive/6630efa2aceb4ff02f73d8c9cd5c321f094bcb07.jpg","id":115231271425821,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.19史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/f92b6851fe7cf458ad37b8a9228b2388100680137.png","id":43097123,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【官方抽奖合集】⭐（精选大奖版）⭐超多大奖，等你参与⭐","thumb":"http://i2.hdslb.com/bfs/archive/ffb8176c69f15a75d183bea7b52107cd4ab148f4.jpg","id":115230147351928,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【互动抽奖】⭐官方抽奖合集（全部版）⭐评论区置顶传送门⭐","thumb":"http://i1.hdslb.com/bfs/archive/b4140003edbe88df5bbaa5d00ee0a2d5c1d19f64.jpg","id":115230113796252,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.20、9.21、9.22开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/b3c75c41fc29fb7480fe56c5272c7ddc100680137.png","id":43093395,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.20、9.21、9.22开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/37ce193c1d43583f0a1178817a3db77b100680137.png","id":43093342,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【临期/速看】⭐即将开奖的134个抽奖⭐【抽奖合集】⭐","thumb":"http://i2.hdslb.com/bfs/archive/10df49e7786ee4246bdb5f15ed8afbfc4ba42f4b.jpg","id":115229409155199,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.20、9.21、9.22开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/b92d6a95a873d73cfebd558be8eb6899100680137.png","id":43085220,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"❤️⭐🎁b站抽奖看这里！🎁⭐❤️","thumb":"http://i2.hdslb.com/bfs/archive/b1d48be500e0ebc4e51be56182861ab5ae51316a.jpg","id":115225718235131,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【最新】🎁抽奖合集🎁评论区置顶传送门🎁","thumb":"http://i0.hdslb.com/bfs/archive/b1822c80e90e710bd7feada180b6e01e6c008945.jpg","id":115225718168119,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.18史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/44a92d8061e6999ada3efbde49c40e51100680137.png","id":43084820,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【官方抽奖合集】🎁（精选大奖版）🎁超多大奖！🎁","thumb":"http://i1.hdslb.com/bfs/archive/e8ecbb25ce59412890e4f6aab3e0904ae503e94d.jpg","id":115224677981344,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【官方抽奖合集】🎁（全部版）🎁超全超多🎁","thumb":"http://i0.hdslb.com/bfs/archive/565a75bb0d24205f86a1a446936ee8c2f1296710.jpg","id":115224661204251,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.19、9.20、9.21开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/ddcca600b6ea694205a3dba99e7ddd0a100680137.png","id":43081667,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.19、9.20、9.21开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/0b8af5843a4e0636a00c114ae6851110100680137.png","id":43081643,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【即将开奖】🎁【临期/速看】抽奖合集🎁","thumb":"http://i2.hdslb.com/bfs/archive/481e73ca77720a3e78c4ab35110b63c10507712c.jpg","id":115223721680621,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.19、9.20、9.21开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/64517470430fadaf8a6fd5f6b306cd58100680137.png","id":43074836,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁❤️⭐b站抽奖看这里！⭐❤️🎁","thumb":"http://i2.hdslb.com/bfs/archive/fa9bce48ca456367ffcbbe241d976d6c72915a97.jpg","id":115220081023942,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【最新】⭐抽奖合集⭐评论区置顶传送门⭐","thumb":"http://i1.hdslb.com/bfs/archive/d450d2739718afca4d9aeee34793fb7f49ad0a2c.jpg","id":115220064243782,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.17史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/72cdaef7e6cdbfaa8c07b923e4074a1c100680137.png","id":43073443,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【官方抽奖合集】⭐（精选大奖版）⭐上万元大奖等你参加！⭐","thumb":"http://i1.hdslb.com/bfs/archive/4d6003f62b3c00f3a970b672ac82793c9a0b5b1a.jpg","id":115218889906153,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐官方抽奖合集（全部版）⭐超多超全合集⭐","thumb":"http://i0.hdslb.com/bfs/archive/a514c24c3d0c27a59e1a6e829ae31b6ad85bb6b2.jpg","id":115218839639960,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】（精选大奖版）9.18、9.19、9.20开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/561550e727c39f60ad22d55b9b59dc14100680137.png","id":43070918,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【官方抽奖合集】9.18、9.19、9.20开奖部分！（全部版）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/0a5c416d745223e9f9a3bbef917b16df100680137.png","id":43070770,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐【即将开奖】⭐【临期/速看】⭐超多抽奖⭐抽奖合集⭐1","thumb":"http://i0.hdslb.com/bfs/archive/63c27f899b76ab369177c47f24f4dbe7b852ade6.jpg","id":115218420078898,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"假抽奖的骗子“科技阁”，摇身一变成了黄标十万粉的大UP？官方你可涨点心吧!","thumb":"http://i0.hdslb.com/bfs/archive/b9ab572e3afa4393f6d019e3da2c1cf5cae858b4.jpg","id":115218185194525,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"【临期/速看】非官方抽奖+加码抽奖9.18、9.19、9.20开奖！","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/1e07f90837bbc0de94f35fea28376165100680137.png","id":43062519,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【最新】🎁抽奖合集🎁评论区置顶传送门🎁","thumb":"http://i2.hdslb.com/bfs/archive/7770e5b9dd08fe9cce534a07067ce33d2fce4e30.jpg","id":115214091689848,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"⭐🎁❤️b站抽奖看这里！❤️🎁⭐","thumb":"http://i1.hdslb.com/bfs/archive/7508557a8367d07497311da61d05a27f8345bc38.jpg","id":115214091687881,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"2025.9.16史上最全抽奖合集（重磅出击！史上最好！最全！）","thumb":"https://i0.hdslb.com/bfs/new_dyn/banner/887e32a4a2cb37bb98594f76e5eb8046100680137.png","id":43061236,"author":"你的抽奖工具人","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"🎁【超多大奖】🎁官方抽奖合集（精选大奖版）🎁","thumb":"http://i1.hdslb.com/bfs/archive/bb4f1117bcf56c89357ec1196aefba937f733c45.jpg","id":115213185585903,"author":"你的抽奖工具人","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"content":"恭喜你在我发起的抽奖直播预约：《狮届抽象》中获得了8.8🧧"}" matched by keywords: 恭喜, 抽奖
+18background.js:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月22日 76个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/d796fa4d9b255d73bcff0db2491603283546776042736296.jpg","id":43112568,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月21日 87个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/17f673dd7121082a5f95132c930c8c5e3546776042736296.jpg","id":43112538,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月21日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/1fb4d81a4c735cbaa9aead06bc0b4e363546776042736296.jpg","id":43108493,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月20日 140个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/cd4cb87d0b113af938b646b486d54de23546776042736296.jpg","id":43108472,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月20日 62个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/666de7f2a174807861e7cd1be00ea3403546776042736296.jpg","id":43095096,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月19日 53个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/01712f694fdfe1923273a4c03db3f2043546776042736296.jpg","id":43095013,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月19日 91个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/8a292c1f0899725b0bb51714d42031703546776042736296.jpg","id":43085988,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月18日 72个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/cc71cb21ee5a365324061ebf85f2e31e3546776042736296.jpg","id":43085960,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月18日 19个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/4e4c264aad3b41c4a98943a9598778cb3546776042736296.jpg","id":43069494,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月17日 85个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/66b4243a949d172c5cd0b56abccb07d13546776042736296.jpg","id":43069438,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月16日 83个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/a40bf9000738296438b05d1135e736373546776042736296.jpg","id":43061738,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月17日 27个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/997b1f82688407a0519c5834eef58a183546776042736296.jpg","id":43061759,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月15日 53个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/439dd0ef74227a1ec20d029a7f35c9dd3546776042736296.jpg","id":43050487,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月15日 67个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/d3ba3ef4d41bee982d316ef2e50610e33546776042736296.jpg","id":43039080,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月14日 98个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c9422c1cdc67652bee03931ec73e4e923546776042736296.jpg","id":43039051,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月14日 51个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/3e78c4e07f52195c7303144d74bed9943546776042736296.jpg","id":43029637,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月13日 56个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/3d83fd85694231f7e17b78a81594b3213546776042736296.jpg","id":43029623,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月12日 56个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/68c79651f3c5053b6adee0303c88b8ef3546776042736296.jpg","id":43015219,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月13日 21个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/42a1d2c0cd45329770db54b748c63a5e3546776042736296.jpg","id":43015245,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月12日 58个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/41bdf357385239c26f5d51d68373c00d3546776042736296.jpg","id":43007442,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月11日 95个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/7cc8c384c188dd4790be9c83e03273663546776042736296.jpg","id":43007422,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月11日 45个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/f8c46cb8c0540609d19968d1ff862c8f3546776042736296.jpg","id":42994993,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月10日 127个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/62307cb53fd8092028ac4c77a583b1573546776042736296.jpg","id":42994967,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月10日 45个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/d6fe0532f6b4182cc9c6d04abc8323203546776042736296.jpg","id":42984093,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月9日 118个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/45f47345a7eeeb11d439d479aef514613546776042736296.jpg","id":42984070,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月9日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/3663b8d1628f5204635575d25af148123546776042736296.jpg","id":42970167,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月8日 77个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/9ae5f7deb457ae4c1727fc8b1c6019663546776042736296.jpg","id":42970129,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月8日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/a586d95065d3073bdc73f9aea74977aa3546776042736296.jpg","id":42963095,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月7日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c4defb21408836da7e0d71f689b7359a3546776042736296.jpg","id":42954646,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月6日 99个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/b025e79f14993cf32c361d99170280a13546776042736296.jpg","id":42953460,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月6日 19个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/b0bc1ff32ec037e57e4f0acc4961d0343546776042736296.jpg","id":42942035,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月5日 104个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/2a0ec0620dd00765dfdadea254f38a133546776042736296.jpg","id":42941989,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月4日 40个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/14aa5bbe22e46c9a6bac74eba7ab42743546776042736296.jpg","id":42927945,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月5日 40个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/9ff4194012cc769ffa5f8b6c748abe503546776042736296.jpg","id":42927979,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月4日 26个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/69d10f4095aaa6c4526d4d4ed994897c3546776042736296.jpg","id":42918905,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月3日 43个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c8257163cada74b455fd43b2fc907e7b3546776042736296.jpg","id":42918864,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月3日 14个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/024e161fc51413529a4caba9fc40bf513546776042736296.jpg","id":42907871,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月2日 104个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/12e8fc014ca29eb82d5325de9a0807d83546776042736296.jpg","id":42907834,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月1日 142个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/1a85c37648e0406340c5a198322e12593546776042736296.jpg","id":42895772,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月2日 19个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/0f690da0a3a83b99743f5919201f923a3546776042736296.jpg","id":42895819,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月1日 51个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/983a6839b42cc880b8aaeddc1032c2673546776042736296.jpg","id":42889193,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月31日 48个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/479c2cdac0ce828cdb68dbf1af6735d63546776042736296.jpg","id":42880619,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"直播开奖录屏","thumb":"http://i2.hdslb.com/bfs/archive/5731fdab7f8b6b66fee56bfa137dc498a89905e0.jpg","id":115117270310008,"author":"互动抽奖娘","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月30日 48个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/39668f3474e79dec014cb26a4c14a0cf3546776042736296.jpg","id":42863021,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 8月29日 112个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/ce2a9ef9b49d0c1273a5378bd952fb013546776042736296.jpg","id":42862985,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月29日 90个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/ce033deacd0372a0db892943f15b8cee3546776042736296.jpg","id":42849717,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 8月28日 47个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/b791c46e5b130bfff1d1c78fd95640733546776042736296.jpg","id":42849690,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月28日 13个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/ad772c41570ac13c5c4a4637b0b0b8b83546776042736296.jpg","id":42841237,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 8月27日 74个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c29d8dcfd3df58afc89c81d7b724a0d93546776042736296.jpg","id":42840658,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月27日 11个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/1bbe6c89c1eb33ec045b063331958fbe3546776042736296.jpg","id":42826737,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+2background.js:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月22日 76个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/d796fa4d9b255d73bcff0db2491603283546776042736296.jpg","id":43112568,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月21日 87个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/17f673dd7121082a5f95132c930c8c5e3546776042736296.jpg","id":43112538,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月21日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/1fb4d81a4c735cbaa9aead06bc0b4e363546776042736296.jpg","id":43108493,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月20日 140个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/cd4cb87d0b113af938b646b486d54de23546776042736296.jpg","id":43108472,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月20日 62个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/666de7f2a174807861e7cd1be00ea3403546776042736296.jpg","id":43095096,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月19日 53个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/01712f694fdfe1923273a4c03db3f2043546776042736296.jpg","id":43095013,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月19日 91个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/8a292c1f0899725b0bb51714d42031703546776042736296.jpg","id":43085988,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月18日 72个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/cc71cb21ee5a365324061ebf85f2e31e3546776042736296.jpg","id":43085960,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月18日 19个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/4e4c264aad3b41c4a98943a9598778cb3546776042736296.jpg","id":43069494,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月17日 85个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/66b4243a949d172c5cd0b56abccb07d13546776042736296.jpg","id":43069438,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月16日 83个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/a40bf9000738296438b05d1135e736373546776042736296.jpg","id":43061738,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月17日 27个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/997b1f82688407a0519c5834eef58a183546776042736296.jpg","id":43061759,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月15日 53个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/439dd0ef74227a1ec20d029a7f35c9dd3546776042736296.jpg","id":43050487,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月15日 67个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/d3ba3ef4d41bee982d316ef2e50610e33546776042736296.jpg","id":43039080,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月14日 98个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c9422c1cdc67652bee03931ec73e4e923546776042736296.jpg","id":43039051,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月14日 51个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/3e78c4e07f52195c7303144d74bed9943546776042736296.jpg","id":43029637,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月13日 56个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/3d83fd85694231f7e17b78a81594b3213546776042736296.jpg","id":43029623,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月12日 56个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/68c79651f3c5053b6adee0303c88b8ef3546776042736296.jpg","id":43015219,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月13日 21个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/42a1d2c0cd45329770db54b748c63a5e3546776042736296.jpg","id":43015245,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月12日 58个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/41bdf357385239c26f5d51d68373c00d3546776042736296.jpg","id":43007442,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月11日 95个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/7cc8c384c188dd4790be9c83e03273663546776042736296.jpg","id":43007422,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月11日 45个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/f8c46cb8c0540609d19968d1ff862c8f3546776042736296.jpg","id":42994993,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月10日 127个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/62307cb53fd8092028ac4c77a583b1573546776042736296.jpg","id":42994967,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月10日 45个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/d6fe0532f6b4182cc9c6d04abc8323203546776042736296.jpg","id":42984093,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月9日 118个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/45f47345a7eeeb11d439d479aef514613546776042736296.jpg","id":42984070,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月9日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/3663b8d1628f5204635575d25af148123546776042736296.jpg","id":42970167,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月8日 77个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/9ae5f7deb457ae4c1727fc8b1c6019663546776042736296.jpg","id":42970129,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月8日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/a586d95065d3073bdc73f9aea74977aa3546776042736296.jpg","id":42963095,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月7日 32个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c4defb21408836da7e0d71f689b7359a3546776042736296.jpg","id":42954646,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月6日 99个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/b025e79f14993cf32c361d99170280a13546776042736296.jpg","id":42953460,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月6日 19个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/b0bc1ff32ec037e57e4f0acc4961d0343546776042736296.jpg","id":42942035,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月5日 104个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/2a0ec0620dd00765dfdadea254f38a133546776042736296.jpg","id":42941989,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月4日 40个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/14aa5bbe22e46c9a6bac74eba7ab42743546776042736296.jpg","id":42927945,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月5日 40个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/9ff4194012cc769ffa5f8b6c748abe503546776042736296.jpg","id":42927979,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月4日 26个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/69d10f4095aaa6c4526d4d4ed994897c3546776042736296.jpg","id":42918905,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月3日 43个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c8257163cada74b455fd43b2fc907e7b3546776042736296.jpg","id":42918864,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月3日 14个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/024e161fc51413529a4caba9fc40bf513546776042736296.jpg","id":42907871,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月2日 104个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/12e8fc014ca29eb82d5325de9a0807d83546776042736296.jpg","id":42907834,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 9月1日 142个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/1a85c37648e0406340c5a198322e12593546776042736296.jpg","id":42895772,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月2日 19个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/0f690da0a3a83b99743f5919201f923a3546776042736296.jpg","id":42895819,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 9月1日 51个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/983a6839b42cc880b8aaeddc1032c2673546776042736296.jpg","id":42889193,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月31日 48个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/479c2cdac0ce828cdb68dbf1af6735d63546776042736296.jpg","id":42880619,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"直播开奖录屏","thumb":"http://i2.hdslb.com/bfs/archive/5731fdab7f8b6b66fee56bfa137dc498a89905e0.jpg","id":115117270310008,"author":"互动抽奖娘","source":5}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月30日 48个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/39668f3474e79dec014cb26a4c14a0cf3546776042736296.jpg","id":42863021,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 8月29日 112个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/ce2a9ef9b49d0c1273a5378bd952fb013546776042736296.jpg","id":42862985,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月29日 90个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/ce033deacd0372a0db892943f15b8cee3546776042736296.jpg","id":42849717,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 8月28日 47个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/b791c46e5b130bfff1d1c78fd95640733546776042736296.jpg","id":42849690,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月28日 13个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/ad772c41570ac13c5c4a4637b0b0b8b83546776042736296.jpg","id":42841237,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"新发抽奖合集 8月27日 74个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/c29d8dcfd3df58afc89c81d7b724a0d93546776042736296.jpg","id":42840658,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"title":"抽奖合集-第二日开奖 8月27日 11个抽奖","thumb":"https://i0.hdslb.com/bfs/new_dyn/1bbe6c89c1eb33ec045b063331958fbe3546776042736296.jpg","id":42826737,"author":"互动抽奖娘","source":6}" matched by keywords: 抽奖
+120background.js:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.
+2background.js:301 手动触发B站私信检测...
+2background.js:98 开始检测B站私信...
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"content":"恭喜你在我发起的抽奖直播预约：《狮届抽象》中获得了8.8🧧"}" matched by keywords: 恭喜, 抽奖
+background.js:215 Debug: session.talker_name for prizeInfo: undefined
+background.js:223 Prize message identified: "{"content":"恭喜你在我发起的抽奖直播预约：《狮届抽象》中获得了8.8🧧"}" matched by keywords: 恭喜, 抽奖
+196background.js:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.

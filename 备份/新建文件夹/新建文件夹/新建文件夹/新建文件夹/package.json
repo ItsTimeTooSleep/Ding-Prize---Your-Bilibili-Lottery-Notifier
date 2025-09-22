@@ -1,0 +1,13 @@
+{
+  "name": "bilibili-prize-alert",
+  "version": "1.0.0",
+  "description": "A Chrome extension to alert for Bilibili prize messages.",
+  "main": "background.js",
+  "scripts": {
+    "start": "echo \"Please load the extension manually in Chrome: chrome://extensions\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
