@@ -8,7 +8,7 @@
 
 `Ding-Prize` 是一款轻量级的浏览器扩展，它能帮助您监控B站（Bilibili）私信箱。当UP主给您发送中奖通知时，它会通过提醒的方式告知您，助您及时兑奖。
 
-[popup](docs/screenshots/popup.png)
+![Popup Page](docs/screenshots/popup/popup.png)
 
 > **⚠️ 注意：当前为早期测试版本 (v0.1.0)**
 > 该版本可能存在未知的Bug，我们非常期待您反馈使用中遇到的问题！请前往 [Issues](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/issues) 页面创建新的反馈。
@@ -82,6 +82,7 @@
 ## 💕 赞助与支持
 
 如果这个项目对您有帮助，或者您希望支持它的持续开发，可以考虑通过以下方式赞助作者：
+![Sponsor Page](docs/sponsors/afdian-qrcode.jpg.png)
 
 [![爱发电](https://img.shields.io/badge/爱发电-支持作者-FF6699?style=for-the-badge&logo=github-sponsors)](https://afdian.com/a/itstimetoosleep)
 
