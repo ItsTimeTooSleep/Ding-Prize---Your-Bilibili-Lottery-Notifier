@@ -91,7 +91,7 @@ async function sendNotification(message, type = 'success', duration = 3000) {
     const notificationTitle = 'Ding-Prize'; // 浏览器通知的固定标题
     chrome.notifications.create({
         type: 'basic',
-        iconUrl: chrome.runtime.getURL('icons/icon48.png'),
+        iconUrl: chrome.runtime.getURL('assets/icons/icon48.png'),
         title: notificationTitle,
         message: message,
         priority: 2

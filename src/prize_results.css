@@ -289,11 +289,11 @@ body {
     background-color: #c82333;
 }
 .prize-item .actions .copy-button {
-    background-color: #007bff;
+    background-color: #008cb3;
     color: white;
 }
 .prize-item .actions .copy-button:hover {
-    background-color: #0056b3;
+    background-color: #008cb3;
 }
 .prize-item .actions button i {
     margin-right: 5px;

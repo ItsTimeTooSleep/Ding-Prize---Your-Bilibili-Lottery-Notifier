@@ -8,6 +8,8 @@
 
 `Ding-Prize` 是一款轻量级的浏览器扩展，它能帮助您监控B站（Bilibili）私信箱。当UP主给您发送中奖通知时，它会通过提醒的方式告知您，助您及时兑奖。
 
+[popup](docs/screenshots/popup.png)
+
 > **⚠️ 注意：当前为早期测试版本 (v0.1.0)**
 > 该版本可能存在未知的Bug，我们非常期待您反馈使用中遇到的问题！请前往 [Issues](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/issues) 页面创建新的反馈。
 
@@ -72,9 +74,9 @@
 <details> <summary><b>Q: 这款扩展收费吗？</b></summary> <b>A:</b> 完全免费和开源。 </details>
 <details> <summary><b>Q: 它需要我的B站密码吗？</b></summary> <b>A:</b> 绝对不需要！扩展的工作原理依赖于您已经登录了B站网页版，它只会访问浏览器中已打开的B站页面所能访问的信息。 </details>
 <details> <summary><b>Q: 扩展会收集我的个人数据吗？</b></summary> <b>A:</b> 不会主动收集。本扩展被设计为在您的浏览器本地运行，所有数据处理都发生在您的设备上。我们没有任何远程服务器用于收集或存储您的个人数据。 </details>
-<details> <summary><b>Q: 扩展的权限为什么需要“读取和更改网站数据”？</b></summary> <b>A:</b> 这是核心功能所必需的。此权限允许扩展在您访问B站时，读取页面内容以提供增强功能，并根据您的设置更改页面布局。它<strong>仅针对B站相关域名</strong>生效，不会也无法监控您在其他网站上的活动。 </details>
+<details> <summary><b>Q: 扩展的权限为什么需要“读取和更改网站数据”？</b></summary> <b>A:</b> 这是核心功能所必需的。此权限允许扩展访问“https://api.vc.bilibili.com/*”，以获取用户的私信数据。它<strong>仅针对B站相关域名</strong>生效，不会也无法监控您在其他网站上的活动。 </details>
 <details> <summary><b>Q: 支持哪些浏览器？</b></summary> <b>A:</b> 主要支持基于Chromium内核的浏览器（如最新版的Chrome, Edge, Arc等）。Firefox支持情况请查看GitHub页面。 </details>
-<details> <summary><b>Q: 功能不生效怎么办？</b></summary> <b>A:</b> 请按以下步骤排查： 1. **确保您已登录B站网页版**。 2. 刷新B站页面。 3. 检查扩展是否已启用。 4. 重启浏览器。 若问题依旧，欢迎在GitHub提交Issue反馈。 </details>
+<details> <summary><b>Q: 会导致黑号吗？</b></summary> <b>A:</b> 本扩展只使用基本私信api，通过私信内容筛选出可能的中奖私信，并不涉及任何自动转发等操作。 </details>
 <details> <summary><b>Q: 我可以参与贡献或提出新功能建议吗？</b></summary> <b>A:</b> 非常欢迎！这是一个开源项目，您可以通过GitHub的Issue或Pull Request功能参与贡献。 </details>
 
 ## 💕 赞助与支持
