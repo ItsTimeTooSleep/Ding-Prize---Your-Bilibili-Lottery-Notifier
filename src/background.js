@@ -1,8 +1,4 @@
-const PRIZE_KEYWORDS = [
-    '中奖', '恭喜', '抽奖', '获奖', '幸运',
-    '锦鲤', '地址', '收件',
-    '奖品', '礼物', '赠品'
-];
+
 
 const PRIZE_SENDER_TYPES = [
     7,  // UP主小助手
@@ -14,11 +10,15 @@ const PRIZE_SENDER_TYPES = [
 const DEFAULT_SETTINGS = {
     enabled: true,
     checkInterval: 24, // hours
+    prizeKeywords: [
+        '中奖', '恭喜', '抽奖', '获奖', '幸运',
+        '锦鲤', '地址', '收件',
+        '奖品', '礼物', '赠品'
+    ],
     blacklistKeywords: [
         '合集',
     ],
     lastCheckedTime: 0,
-    // processedMessages: [], // 迁移到 chrome.storage.local
 };
 
 // 初始化设置
@@ -31,7 +31,10 @@ chrome.runtime.onInstalled.addListener(() => {
             chrome.storage.sync.set({ checkInterval: DEFAULT_SETTINGS.checkInterval });
         }
         if (items.prizeKeywords === undefined) {
-            chrome.storage.sync.set({ prizeKeywords: PRIZE_KEYWORDS.join('\n') });
+            chrome.storage.sync.set({ prizeKeywords: DEFAULT_SETTINGS.prizeKeywords.join('\n') });
+        }
+        if (items.blacklistKeywords === undefined) {
+            chrome.storage.sync.set({ blacklistKeywords: DEFAULT_SETTINGS.blacklistKeywords.join('\n') });
         }
         // 创建或更新定时任务
         createAlarm(items.checkInterval || DEFAULT_SETTINGS.checkInterval);
@@ -118,26 +121,27 @@ async function checkBiliMessages() {
                 resolve({
                     enabled: syncItems.enabled !== undefined ? syncItems.enabled : DEFAULT_SETTINGS.enabled,
                     checkInterval: syncItems.checkInterval || DEFAULT_SETTINGS.checkInterval,
-                    prizeKeywords: syncItems.prizeKeywords || PRIZE_KEYWORDS.join('\n'),
+                    prizeKeywords: syncItems.prizeKeywords !== undefined ? syncItems.prizeKeywords : DEFAULT_SETTINGS.prizeKeywords.join('\n'),
                     lastCheckedTime: syncItems.lastCheckedTime || DEFAULT_SETTINGS.lastCheckedTime,
                     processedMessages: localItems.processedMessages || [],
                     prizeMessages: localItems.prizeMessages || [],
-                    blacklistKeywords: syncItems.blacklistKeywords || DEFAULT_SETTINGS.blacklistKeywords // 获取黑名单关键词
+                    blacklistKeywords: syncItems.blacklistKeywords !== undefined ? syncItems.blacklistKeywords : DEFAULT_SETTINGS.blacklistKeywords // 获取黑名单关键词
                 });
             });
         });
     });
 
-    let currentPrizeKeywords = PRIZE_KEYWORDS;
+    let currentPrizeKeywords = [];
     if (settings.prizeKeywords) {
-        const customKeywords = settings.prizeKeywords.split('\n').map(s => s.trim()).filter(s => s.length > 0);
-        currentPrizeKeywords = [...new Set([...PRIZE_KEYWORDS, ...customKeywords])];
+        currentPrizeKeywords = settings.prizeKeywords.split('\n').map(s => s.trim()).filter(s => s.length > 0);
     }
+    console.log('[Background] Current Prize Keywords:', currentPrizeKeywords);
 
     let currentBlacklistKeywords = settings.blacklistKeywords;
     if (typeof currentBlacklistKeywords === 'string') {
         currentBlacklistKeywords = currentBlacklistKeywords.split('\n').map(s => s.trim()).filter(s => s.length > 0);
     }
+    console.log('[Background] Current Blacklist Keywords:', currentBlacklistKeywords);
 
     // 1. 获取会话列表
     chrome.runtime.sendMessage({ type: "updateProgress", status: "started", message: "正在获取会话列表..." });
@@ -275,6 +279,7 @@ async function checkBiliMessages() {
                         newPrizeFound = true; // 标记发现新的中奖消息
                     } else if (currentBlacklistKeywords.some(blackword => message.content.includes(blackword))) {
                         console.log(`[Background] 消息被黑名单关键词过滤: ${message.content.substring(0, 50)}...`);
+                        console.log('[Background] Message content:', message.content);
                     }
                 }
             } else {
@@ -349,12 +354,20 @@ async function getSetting(key, defaultValue) {
 
 // 辅助函数：检查消息是否包含中奖关键词
 function containsPrizeKeywords(messageContent, keywords, blacklistKeywords) {
+    console.log('[containsPrizeKeywords] Checking message:', messageContent.substring(0, 50), '...');
+    console.log('[containsPrizeKeywords] Prize keywords:', keywords);
+    console.log('[containsPrizeKeywords] Blacklist keywords:', blacklistKeywords);
     // 先检查黑名单
     if (blacklistKeywords.some(blackword => messageContent.includes(blackword))) {
+        console.log('[containsPrizeKeywords] Message blacklisted by:', blacklistKeywords.find(blackword => messageContent.includes(blackword)));
         return false;
     }
     // 再检查中奖关键词
-    return keywords.some(keyword => messageContent.includes(keyword));
+    if (keywords.some(keyword => messageContent.includes(keyword))) {
+        console.log('[containsPrizeKeywords] Message contains prize keyword:', keywords.find(keyword => messageContent.includes(keyword)));
+        return true;
+    }
+    return false;
 }
 
 // 辅助函数：检查发送者类型是否为重点监控类型
