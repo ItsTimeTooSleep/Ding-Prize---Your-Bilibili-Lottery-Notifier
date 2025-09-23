@@ -47,8 +47,8 @@
 
 <img src="screenshots/installation-chrome-open_developer_ _mode.png" width="600" alt="开启开发者模式">
 
-### 加载已解压的扩展
-1. 点击"未打包的扩展程序"按钮
+### 加载未打包的扩展程序
+1. 点击"加载未打包的扩展程序"按钮
 
 <img src="screenshots/installation-chrome_click_load_folder.png" width="600" alt="点击加载文件夹">
 
