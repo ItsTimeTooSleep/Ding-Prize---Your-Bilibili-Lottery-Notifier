@@ -82,7 +82,7 @@
 ## 💕 赞助与支持
 
 如果这个项目对您有帮助，或者您希望支持它的持续开发，可以考虑通过以下方式赞助作者：
-![弹出界面](docs/screenshots/popup/popup.png){:width="300px"}
+<img src="docs/sponsors/afdian-qrcode.jpg" width="300" alt="sponsors-qrcode">
 
 [![爱发电](https://img.shields.io/badge/爱发电-支持作者-FF6699?style=for-the-badge&logo=github-sponsors)](https://afdian.com/a/itstimetoosleep)
 
