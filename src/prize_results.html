@@ -16,18 +16,23 @@
                 <h1>所有中奖结果</h1>
             </div>
         </div>
-        <div id="prize-details" style="margin-bottom: 15px; font-size: 0.9em; color: #666;">
-            <!-- 详细信息将在这里动态加载 -->
-        </div>
-
-        <ul id="all-prize-messages-list" class="prize-list">
-            <!-- 所有中奖消息将在这里动态加载 -->
-        </ul>
 
         <div id="no-prizes-message" class="no-prizes" style="display: none;">
             <i class="fas fa-box-open"></i>
             <p>暂无中奖消息。</p>
         </div>
+
+        <div class="batch-actions" style="display: none;">
+            <label class="select-all-label">
+                <input type="checkbox" id="select-all-prizes">
+                全选
+            </label>
+            <button id="delete-selected-prizes" class="button delete-button"><i class="fas fa-trash-alt"></i> 删除选中</button>
+        </div>
+
+        <ul id="all-prize-messages-list" class="prize-list">
+            <!-- 所有中奖消息将在这里动态加载 -->
+        </ul>
 
         <button id="back-to-popup" class="back-button">返回</button>
     </div>

@@ -14,6 +14,12 @@
     --border-radius: 12px;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    /* Custom Confirmation Dialog Variables */
+    --background-color-light: var(--card-bg);
+    --text-color-primary: var(--text-primary);
+    --button-background-color: var(--bg-color);
+    --button-text-color: var(--text-primary);
+    --border-color: #ddd;
 }
 
 * {
@@ -575,7 +581,7 @@ button.loading::after {
     background-color: var(--background-color-light);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     text-align: center;
     max-width: 300px;
     width: 90%;
@@ -618,7 +624,7 @@ button.loading::after {
 }
 
 .custom-confirm-buttons .cancel-button:hover {
-    background-color: var(--button-hover-background-color);
+    background-color: #e0e0e0;
 }
 .message-item .actions button i {
     margin-right: 5px;

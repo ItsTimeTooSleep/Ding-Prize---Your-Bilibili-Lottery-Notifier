@@ -13,21 +13,20 @@
 
 .actions button {
     /* flex: 1; */ /* 移除 flex: 1 使按钮不占满宽度 */
-    width: 150px !important; /* 设置固定宽度，使其更长 */
-    padding: 2px 12px !important; /* 减小垂直内边距，使其更矮 */
+    width: 150px; /* 设置固定宽度，使其更长 */
+    padding: 2px 12px; /* 减小垂直内边距，使其更矮 */
     border-radius: 6px;
     font-size: 13px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    height: 25px !important; /* 明确设置高度，使其更矮 */
+    height: 25px; /* 明确设置高度，使其更矮 */
 }
 
 .actions button i {
     vertical-align: middle;
     margin-right: 5px; /* Add some space between icon and text */
 }
-
-.delete-button {
+/* .delete-button {
     background-color: #f44336;
     color: white;
     border: none;
@@ -35,8 +34,7 @@
 
 .delete-button:hover {
     background-color: #d32f2f;
-}
-
+} */
 .copy-button {
     background-color: #00a1d6;
     color: white;
@@ -291,6 +289,62 @@ body {
 .prize-item .actions .copy-button {
     background-color: #008cb3;
     color: white;
+}
+.prize-item .actions .copy-button:hover {
+    background-color: #008cb3;
+}
+.prize-item .actions button i {
+    margin-right: 5px;
+}
+.prize-thumb {
+        max-width: 150px; /* 限制图片最大宽度为150px */
+        height: auto; /* 高度自动，保持图片比例 */
+        display: block; /* 确保图片独占一行 */
+        margin-top: 10px; /* 图片上方留出一些间距 */
+        border-radius: 4px; /* 轻微圆角 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    }
+
+.batch-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    justify-content: flex-start;
+}
+
+.batch-actions .select-all-label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #333;
+}
+
+.batch-actions input[type="checkbox"] {
+    margin-right: 5px;
+    width: 18px;
+    height: 18px;
+}
+
+.batch-actions .button {
+    flex-shrink: 0;
+    width: 120px; /* 调整为更合适的宽度 */
+    padding: 8px 15px;
+    font-size: 0.9em;
+    height: auto;
+    justify-content: center; /* Center content horizontally */
+}
+
+.batch-actions .delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.batch-actions .delete-button:hover {
+    background-color: #c82333;
 }
 .prize-item .actions .copy-button:hover {
     background-color: #008cb3;

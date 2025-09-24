@@ -401,17 +401,21 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             }
         });
         return true; // 表示异步响应
-    } else if (request.action === "deletePrizeMessage") {
+    } else if (request.action === "deletePrizeMessages") {
+        console.log('[Background] Received deletePrizeMessages request:', request.messageIds); // Add this line
         chrome.storage.local.get(['prizeMessages'], (result) => {
             let prizeMessages = result.prizeMessages || [];
             const initialLength = prizeMessages.length;
-            prizeMessages = prizeMessages.filter(msg => msg.id !== request.messageId);
+            // Filter out messages whose IDs are in the request.messageIds array
+            prizeMessages = prizeMessages.filter(msg => !request.messageIds.includes(String(msg.id)));
             if (prizeMessages.length < initialLength) {
                 chrome.storage.local.set({ prizeMessages: prizeMessages }, () => {
+                    console.log('[Background] prizeMessages updated in local storage. New count:', prizeMessages.length); // Add this line
                     sendResponse({ success: true });
                 });
             } else {
-                sendResponse({ success: false, error: "Message not found" });
+                console.log('[Background] No messages found to delete or no change in prizeMessages.'); // Add this line
+                sendResponse({ success: false, error: "No messages found to delete" });
             }
         });
         return true; // 表示异步响应

@@ -24,8 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const prizeKeywords = prizeKeywordsTextarea.value;
         const blacklistKeywords = blacklistKeywordsTextarea.value;
 
-        if (isNaN(checkInterval) || checkInterval < 1 || checkInterval > 24) {
-            statusMessage.textContent = '检测频率必须是1到24之间的数字！';
+        if (isNaN(checkInterval) || checkInterval < 1 || checkInterval > 168) {
+            statusMessage.textContent = '检测频率必须是1到168之间的数字（即最多7天）！';
+            statusMessage.style.color = 'red';
+            statusMessage.style.opacity = '1';
+            setTimeout(() => {
+                statusMessage.style.opacity = '0';
+            }, 3000);
+            return;
+        }
+
+        if (prizeKeywords.trim() === '') {
+            statusMessage.textContent = '中奖关键词不能为空！';
             statusMessage.style.color = 'red';
             statusMessage.style.opacity = '1';
             setTimeout(() => {
