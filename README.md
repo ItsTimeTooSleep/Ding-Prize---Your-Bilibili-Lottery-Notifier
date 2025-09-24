@@ -6,12 +6,36 @@
 
 **Never miss a winning prize on Bilibili! / 再也不错过B站的中奖私信！**
 
-`Ding-Prize` 是一款轻量级的浏览器扩展，它能帮助您监控B站（Bilibili）私信箱。当UP主给您发送中奖通知时，它会通过提醒的方式告知您，助您及时兑奖。
+## 📖 简介
+`Ding-Prize` 是一款轻量级的浏览器扩展，它能帮助您监控B站（Bilibili）私信箱。当UP主给您发送中奖通知时，它会通过提醒的方式告知您，助您及时兑奖。所有数据处理均在本地完成，无需服务器，保护您的隐私安全。
 
 ![Popup Page](docs/screenshots/popup/popup.png)
 
+---
+
 > **⚠️ 注意：当前为早期测试版本 (v0.1.1)**
 > 该版本可能存在未知的Bug，我们非常期待您反馈使用中遇到的问题！请前往 [Issues](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/issues) 页面创建新的反馈。
+
+---
+## ✨ 项目灵感
+
+**Ding-Prize 的诞生，源于一次险些错过的运气和一位值得感谢的开发者。**
+
+今年七月，我第一次在B站中奖，得益于UP主 **[锦鲤送瑞](https://space.bilibili.com/99584491)** ——他开发了一个能够自动扫描开奖动态并@中奖粉丝的工具。正是它的主动提醒，我才没有与那份好运失之交臂。
+
+然而，不久前，**[锦鲤送瑞](https://space.bilibili.com/99584491)** 发布动态宣布项目停止更新。原因很简单，却也令人感慨：
+
+> "云服务器到期了，一直为爱发电[脸红]，谢谢关注。"
+
+这句话深深触动了我。一个惠及无数用户的好工具，却因持续的个人投入而难以为继。这让我意识到，依赖中心化服务器的服务存在天然的脆弱性。
+
+因此，我萌生了开发 Ding-Prize 的想法，并确立了核心原则：
+
+- **传承精神**：延续帮助用户捕捉运气的初衷
+- **技术重构**：采用**本地化架构**，所有数据仅在用户浏览器中处理
+- **可持续性**：无服务器成本，真正实现"一次开发，持续可用"
+
+**Ding-Prize 是对 [锦鲤送瑞] 精神的延续，用不同的技术方案解决同一个用户需求。** 感谢所有为爱发电的开发者，是你们让技术充满了温度。
 
 ---
 
@@ -76,7 +100,7 @@
 <details> <summary><b>Q: 扩展会收集我的个人数据吗？</b></summary> <b>A:</b> 不会主动收集。本扩展被设计为在您的浏览器本地运行，所有数据处理都发生在您的设备上。我们没有任何远程服务器用于收集或存储您的个人数据。 </details>
 <details> <summary><b>Q: 扩展的权限为什么需要“读取和更改网站数据”？</b></summary> <b>A:</b> 这是核心功能所必需的。此权限允许扩展访问“https://api.vc.bilibili.com/*”，以获取用户的私信数据。它<strong>仅针对B站相关域名</strong>生效，不会也无法监控您在其他网站上的活动。 </details>
 <details> <summary><b>Q: 支持哪些浏览器？</b></summary> <b>A:</b> 主要支持基于Chromium内核的浏览器（如最新版的Chrome, Edge, Arc等）。Firefox支持情况请查看GitHub页面。 </details>
-<details> <summary><b>Q: 会导致黑号吗？</b></summary> <b>A:</b> 本扩展只使用基本私信api，通过私信内容筛选出可能的中奖私信，并不涉及任何自动转发等操作。 </details>
+<details> <summary><b>Q: 会导致黑号吗？</b></summary> <b>A:</b> 不会。本扩展只使用基本私信api，通过私信内容筛选出可能的中奖私信，并不涉及任何自动转发等操作。 </details>
 <details> <summary><b>Q: 我可以参与贡献或提出新功能建议吗？</b></summary> <b>A:</b> 非常欢迎！这是一个开源项目，您可以通过GitHub的Issue或Pull Request功能参与贡献。 </details>
 
 ## 💕 赞助与支持
