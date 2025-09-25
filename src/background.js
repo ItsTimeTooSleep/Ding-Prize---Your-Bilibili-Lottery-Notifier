@@ -208,10 +208,25 @@ async function checkBiliMessages() {
 
             if (msgData.code === 0 && msgData.data && msgData.data.messages) {
                 for (const message of msgData.data.messages) {
+                    let uniqueMessageId;
+                    let parsedContent;
+
+                    try {
+                        parsedContent = JSON.parse(message.content);
+                        if (parsedContent.id) {
+                            uniqueMessageId = parsedContent.id;
+                        } else {
+                            // If no 'id' field in parsed content, use the full content as a fallback unique ID
+                            uniqueMessageId = message.content;
+                        }
+                    } catch (e) {
+                        // If message.content is not JSON, use the full content as unique ID
+                        uniqueMessageId = message.content;
+                    }
+
                     // 检查消息是否已处理
-                    if (settings.processedMessages.includes(JSON.parse(message.content).id)) {
-                        // console.log('Full message object:', message);
-                        // console.log(`Message ${JSON.parse(message.content).id} already processed. Skipping.`);
+                    if (settings.processedMessages.includes(uniqueMessageId)) {
+                        console.log(`[Background] Message with ID "${uniqueMessageId}" already processed. Skipping.`);
                         continue;
                     }
 
@@ -220,13 +235,17 @@ async function checkBiliMessages() {
                     if (containsPrizeKeywords(message.content, currentPrizeKeywords, currentBlacklistKeywords)) {
                         console.log(`[Background] 发现潜在中奖消息，内容: ${message.content.substring(0, 100)}...`);
                         console.log(`[Background] 原始 message.content 完整内容:`, message.content);
-                        let parsedContent;
+                        // let parsedContent; // This was declared earlier, no need to redeclare
                         let extractedTitle = message.content; // Default to raw message content
                         const originalRawContent = message.content; // Store the original raw content
                         let thumb = '';
 
+                        // Re-parse content here if it was not parsed before, or if we need the parsedContent object for title extraction
+                        // Ensure parsedContent is available for title extraction logic
                         try {
-                            parsedContent = JSON.parse(message.content);
+                            if (!parsedContent) { // Only parse if not already parsed for uniqueMessageId
+                                parsedContent = JSON.parse(message.content);
+                            }
                             console.log(`[Background] 消息内容成功解析为JSON:`, parsedContent);
 
                             // Prioritize item_text, then text, then content field within JSON
@@ -263,7 +282,7 @@ async function checkBiliMessages() {
                         console.log(`[Background] extractedRawContent:`, originalRawContent); // Use the stored original raw content
                         console.log(`[Background] 正在构建 prizeInfo 对象...`);
                          const prizeInfo = {
-                             id: parsedContent.id || Date.now().toString(), // 为每条消息生成唯一ID
+                             id: uniqueMessageId, // 使用统一的唯一ID
                              title: extractedTitle,
                              uid: session.talker_id,
                              senderUid: session.talker_id, // 暂时保留，后续会删除
@@ -275,7 +294,7 @@ async function checkBiliMessages() {
                          };
                          newPrizeMessages.push(prizeInfo);
                         console.log(`[Background] 已识别中奖消息并添加到 newPrizeMessages:`, prizeInfo);
-                        settings.processedMessages.push(parsedContent.id || Date.now().toString()); // 使用解析后的ID或生成新ID
+                        settings.processedMessages.push(uniqueMessageId); // 使用统一的唯一ID
                         newPrizeFound = true; // 标记发现新的中奖消息
                     } else if (currentBlacklistKeywords.some(blackword => message.content.includes(blackword))) {
                         console.log(`[Background] 消息被黑名单关键词过滤: ${message.content.substring(0, 50)}...`);
