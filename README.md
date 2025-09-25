@@ -13,7 +13,7 @@
 
 ---
 
-> **⚠️ 注意：当前为早期测试版本 (v0.2.0)**
+> **⚠️ 注意：当前为早期测试版本 (v0.2.1)**
 > 该版本可能存在未知的Bug，我们非常期待您反馈使用中遇到的问题！请前往 [Issues](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/issues) 页面创建新的反馈。
 
 ---
@@ -51,17 +51,12 @@
 
 ### 手动安装（开发者/测试版）
 
-1. ## 下载与安装
-
-### 方式一：下载当前最新代码
-- 直接点击仓库页面的 `Code` → `Download ZIP`，即可获得主分支的最新代码。
-
-### 方式二：从 Releases 页面下载（可获取旧版/稳定版）
-- 前往 [GitHub Releases](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/releases) 页面下载。
-
-### 国内用户备用下载
-若访问 GitHub 缓慢，可使用 123 网盘下载最新版本的代码压缩包（与Releases同步）：
-- **链接**：https://www.123865.com/s/Zfw8Td-5dYVv?pwd=NI5Z
+1.  **下载项目代码**：
+    -   **方式一**：在仓库页面点击 `Code` → `Download ZIP`，获取最新代码。
+    -   **方式二 （可下载旧版）**：前往 [GitHub Releases](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/releases) 
+        > 提示：Releases 文件与直接下载的 ZIP 包内容一致，区别在于版本管理。
+    -   **国内用户备用链接**：若访问 GitHub 缓慢，可使用此123网盘链接下载最新版本压缩包：
+        - 链接：`https://www.123865.com/s/Zfw8Td-5dYVv?pwd=NI5Z`
 
 2.  **解压文件**：
     -   将下载的ZIP文件解压到您电脑上的任意文件夹。
@@ -82,7 +77,7 @@
 
 ## 🐛 反馈与贡献
 
-当前版本为 `v0.2.0`，是一个早期测试版，**可能存在诸多未知问题**（如检测失败、误报、通知不触发等）。
+当前版本为 `v0.2.1`，是一个早期测试版，**可能存在诸多未知问题**（如检测失败、误报、通知不触发等）。
 
 您的反馈对我们至关重要！如果您遇到任何问题或有改进建议：
 
