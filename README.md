@@ -4,7 +4,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier?style=for-the-badge&label=Version)
 ![GitHub issues](https://img.shields.io/github/issues/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier?style=for-the-badge&label=Issues)
 
-**Never miss a winning prize on Bilibili! / 再也不错过B站的中奖私信！**
+**不要让一次粗心辜负您上万次的转发！**
 
 ## 📖 简介
 `Ding-Prize` 是一款轻量级的浏览器扩展，它能帮助您监控B站（Bilibili）私信箱。当UP主给您发送中奖通知时，它会通过提醒的方式告知您，助您及时兑奖。所有数据处理均在本地完成，无需服务器，保护您的隐私安全。
@@ -51,14 +51,17 @@
 
 ### 手动安装（开发者/测试版）
 
-由于目前是早期版本，请通过以下方式进行手动安装：
+1. ## 下载与安装
 
-1.  **下载项目代码**：
-    -   点击仓库顶部的 `Code` 按钮，然后选择 `Download ZIP`。
-    -   或者，如果您使用 Git，可以克隆本仓库：
-        ```bash
-        git clone https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier.git
-        ```
+### 方式一：下载当前最新代码
+- 直接点击仓库页面的 `Code` → `Download ZIP`，即可获得主分支的最新代码。
+
+### 方式二：从 Releases 页面下载（可获取旧版/稳定版）
+- 前往 [GitHub Releases](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/releases) 页面下载。
+
+### 国内用户备用下载
+若访问 GitHub 缓慢，可使用 123 网盘下载最新版本的代码压缩包（与Releases同步）：
+- **链接**：https://www.123865.com/s/Zfw8Td-5dYVv?pwd=NI5Z
 
 2.  **解压文件**：
     -   将下载的ZIP文件解压到您电脑上的任意文件夹。
