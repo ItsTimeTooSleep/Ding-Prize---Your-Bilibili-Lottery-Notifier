@@ -88,28 +88,38 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 });
 
 // 辅助函数：发送浏览器通知
-async function sendNotification(message, type = 'success', duration = 3000) {
+async function sendNotification(message, type = 'success', duration = 3000, notificationId = null) {
     console.log(`[Notification] Sending notification: ${message}, Type: ${type}`);
 
     // Check notification permission status
     chrome.notifications.getPermissionLevel(function(level) {
         console.log(`[Notification] Current permission level: ${level}`);
         if (level === 'granted') {
-            const notificationOptions = {
+            const options = {
                 type: 'basic',
-                iconUrl: chrome.runtime.getURL('assets/icons/icon48.png'),
-                title: 'Ding-Prize 通知',
+                iconUrl: chrome.runtime.getURL('assets/icons/icon128.png'),
+                title: 'Ding-Prize',
                 message: message,
                 priority: 2
             };
 
-            chrome.notifications.create('', notificationOptions, function(notificationId) {
-                if (chrome.runtime.lastError) {
-                    console.error(`[Notification] Error creating notification: ${chrome.runtime.lastError.message}`);
-                } else {
-                    console.log(`[Notification] Notification created with ID: ${notificationId}`);
-                }
-            });
+            if (notificationId) {
+                chrome.notifications.create(notificationId, options, function(notificationId) {
+                    if (chrome.runtime.lastError) {
+                        console.error(`[Notification] Error creating notification with ID ${notificationId}:`, chrome.runtime.lastError.message);
+                    } else {
+                        console.log(`[Notification] Notification created with ID: ${notificationId}`);
+                    }
+                });
+            } else {
+                chrome.notifications.create(options, function(notificationId) {
+                    if (chrome.runtime.lastError) {
+                        console.error(`[Notification] Error creating notification:`, chrome.runtime.lastError.message);
+                    } else {
+                        console.log(`[Notification] Notification created with ID: ${notificationId}`);
+                    }
+                });
+            }
         } else {
             console.warn(`[Notification] Notification permission not granted. Current level: ${level}`);
             // Optionally, you could try to request permission here, but it's usually better to let the user trigger it.
@@ -122,7 +132,8 @@ async function sendNotification(message, type = 'success', duration = 3000) {
 
 async function checkBiliMessages() {
     console.log('开始检测B站私信...');
-    sendNotification('正在检测中...', 'info', 0); // 发送“正在检测中...”通知，不自动隐藏
+    const checkingNotificationId = 'bili-checking-notification'; // 定义一个唯一的通知ID
+    sendNotification('正在检测中...', 'info', 0, checkingNotificationId); // 发送“正在检测中...”通知，不自动隐藏
     chrome.runtime.sendMessage({ type: "updateProgress", status: "started", message: "正在初始化检测..." });
 
     let newPrizeFound = false;
@@ -185,6 +196,7 @@ async function checkBiliMessages() {
                 return []; // 登录失效，返回空数组
             } else {
                 console.error(`获取会话列表失败，类型 ${type}:`, data.message);
+                sendNotification('Ding-Prize', `获取会话列表失败: ${data.message}`);
                 chrome.runtime.sendMessage({ type: "updateProgress", status: "error", message: `获取会话列表失败: ${data.message}` });
                 return [];
             }
@@ -316,11 +328,13 @@ async function checkBiliMessages() {
                     }
                 }
             } else {
-                console.error(`获取会话消息失败，talker_id ${session.talker_id}:`, msgData.message);
+                console.error(`获取会话消息失败，会话ID ${session.talker_id}:`, msgData.message);
+                sendNotification('Ding-Prize', `获取会话消息失败: ${msgData.message}`);
                 chrome.runtime.sendMessage({ type: "updateProgress", status: "error", message: `获取会话消息失败: ${msgData.message}` });
             }
         } catch (error) {
-            console.error(`获取会话消息时发生错误，talker_id ${session.talker_id}:`, error);
+            console.error(`获取会话消息时发生错误，会话ID ${session.talker_id}:`, error.name, error.message, error.stack);
+            sendNotification('Ding-Prize', `获取会话消息时发生错误: ${error.message}`);
             chrome.runtime.sendMessage({ type: "updateProgress", status: "error", message: `获取会话消息时发生错误: ${error.message}` });
         }
         chrome.runtime.sendMessage({ type: "updateProgress", status: "in_progress", message: `已检测会话: ${session.talker_name}` });
@@ -368,6 +382,14 @@ async function checkBiliMessages() {
     // 检测完成后，将 isChecking 状态设置为 false
     chrome.storage.sync.set({ isChecking: false }, () => {
         console.log(`[Background] isChecking 状态已设置为 false。`);
+        // 清除“正在检测中...”的通知
+        chrome.notifications.clear(checkingNotificationId, function(wasCleared) {
+            if (wasCleared) {
+                console.log(`[Notification] '${checkingNotificationId}' notification cleared.`);
+            } else {
+                console.log(`[Notification] '${checkingNotificationId}' notification was not found or could not be cleared.`);
+            }
+        });
     });
 }
 
@@ -447,17 +469,34 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             console.log('[Background] prizeMessages before filter:', prizeMessages.map(msg => ({ id: msg.id, type: typeof msg.id })));
             console.log('[Background] request.messageIds:', request.messageIds, 'type of first element:', typeof request.messageIds[0]);
 
-            prizeMessages = prizeMessages.filter(msg => !request.messageIds.includes(String(msg.id)));
-            if (prizeMessages.length < initialLength) {
-                chrome.storage.local.set({ prizeMessages: prizeMessages }, () => {
-                    console.log('[Background] prizeMessages updated in local storage. New count:', prizeMessages.length); // Add this line
-                    sendResponse({ success: true });
+            // 获取 processedMessages
+            chrome.storage.sync.get(['processedMessages'], (syncResult) => {
+                let processedMessages = syncResult.processedMessages || [];
+                console.log('[Background] processedMessages before deletion:', processedMessages);
+
+                // 过滤掉已删除的消息
+                prizeMessages = prizeMessages.filter(msg => !request.messageIds.includes(msg.id));
+
+                // 从 processedMessages 中移除对应的 ID
+                processedMessages = processedMessages.filter(id => !request.messageIds.includes(id));
+                console.log('[Background] processedMessages after deletion:', processedMessages);
+
+                chrome.storage.local.set({ prizeMessages }, () => {
+                    console.log('[Background] Updated prizeMessages in local storage. New length:', prizeMessages.length);
+                    // 同时更新 chrome.storage.sync 中的 processedMessages
+                    chrome.storage.sync.set({ processedMessages }, () => {
+                        console.log('[Background] Updated processedMessages in sync storage:', processedMessages);
+                        if (prizeMessages.length !== initialLength) {
+                            sendResponse({ status: "success", message: "Prize messages deleted successfully." });
+                            // 通知 prize_results.js 刷新页面
+                            chrome.runtime.sendMessage({ type: "refreshPrizeResults" });
+                        } else {
+                            sendResponse({ status: "no_change", message: "No matching prize messages found for deletion." });
+                        }
+                    });
                 });
-            } else {
-                console.log('[Background] No messages found to delete or no change in prizeMessages.'); // Add this line
-                sendResponse({ success: false, error: "No messages found to delete" });
-            }
+            });
         });
-        return true; // 表示异步响应
+        return true; // Indicates that sendResponse will be called asynchronously
     }
 });

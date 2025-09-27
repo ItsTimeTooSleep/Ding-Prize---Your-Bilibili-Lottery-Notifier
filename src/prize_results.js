@@ -88,24 +88,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    chrome.storage.local.get(['prizeMessages'], (result) => {
-        const allPrizeMessages = result.prizeMessages || [];
+    // 添加批量操作相关变量
+    const batchActionsContainer = document.querySelector('.batch-actions');
+    const selectAllCheckbox = document.getElementById('select-all-prizes');
+    const deleteSelectedButton = document.getElementById('delete-selected-prizes');
+    let selectedPrizeIds = [];
 
-        if (allPrizeMessages.length === 0) {
-            document.getElementById('no-prizes-message').style.display = 'block';
-            prizeMessagesList.style.display = 'none';
-            batchActionsContainer.style.display = 'none'; // Hide batch actions if no prizes
-        } else {
-            document.getElementById('no-prizes-message').style.display = 'none';
-            prizeMessagesList.style.display = 'block';
-            allPrizeMessages.forEach((message) => {
-                const listItem = renderPrizeMessage(message);
-                prizeMessagesList.prepend(listItem); // Prepend to show newest first
-                // No need to call bindMessageItemEvents here, as renderPrizeMessage already binds the checkbox
-                // Other buttons (delete, copy, visit) are still bound by bindMessageItemEvents
-                bindMessageItemEvents(listItem, message);
-            });
-            updateBatchActions(); // Initial update of batch actions
+    // 新增函数：加载并渲染中奖消息
+    function loadAndRenderPrizeMessages() {
+        prizeMessagesList.innerHTML = ''; // 清空现有列表
+        selectedPrizeIds = []; // 清空选中项
+
+        chrome.storage.local.get(['prizeMessages'], (result) => {
+            const allPrizeMessages = result.prizeMessages || [];
+
+            if (allPrizeMessages.length === 0) {
+                document.getElementById('no-prizes-message').style.display = 'block';
+                prizeMessagesList.style.display = 'none';
+                batchActionsContainer.style.display = 'none';
+            } else {
+                document.getElementById('no-prizes-message').style.display = 'none';
+                prizeMessagesList.style.display = 'block';
+                allPrizeMessages.forEach((message) => {
+                    const listItem = renderPrizeMessage(message);
+                    prizeMessagesList.prepend(listItem);
+                    bindMessageItemEvents(listItem, message);
+                });
+            }
+            updateNoPrizesMessageVisibility();
+            updateBatchActions();
+        });
+    }
+
+    // 初始加载和渲染
+    loadAndRenderPrizeMessages();
+
+    // 监听来自 background.js 的刷新消息
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        if (request.type === "refreshPrizeResults") {
+            console.log('[prize_results.js] Received refreshPrizeResults message. Reloading...');
+            loadAndRenderPrizeMessages();
+            sendResponse({ status: "refreshed" });
         }
     });
 
@@ -155,12 +178,6 @@ UID: ${prize.uid}
         });
     }
 
-    // 添加批量操作相关变量
-    const batchActionsContainer = document.querySelector('.batch-actions');
-    const selectAllCheckbox = document.getElementById('select-all-prizes');
-    const deleteSelectedButton = document.getElementById('delete-selected-prizes');
-    let selectedPrizeIds = [];
-    
     // 更新批量操作按钮状态
     function updateBatchActions() {
         if (selectedPrizeIds.length >= 2) {
