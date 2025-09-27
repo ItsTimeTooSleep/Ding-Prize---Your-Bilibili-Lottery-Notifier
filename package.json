@@ -1,5 +1,5 @@
 {
-  "name": "Ding-Prize",
+  "name": "ding-prize",
   "version": "0.2.2",
   "description": "Ding-Prize is a browser extension that automatically monitors your Bilibili private messages. It quietly runs in the background and sends you an instant notification the moment it detects a winning notice from an UP host, ensuring you never miss out on claiming your reward.",
   "main": "/src/background.js",
