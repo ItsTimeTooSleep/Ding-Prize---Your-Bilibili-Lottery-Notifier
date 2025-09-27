@@ -187,27 +187,30 @@ UID: ${prize.uid}
     
     // 修改渲染逻辑，添加复选框
     function renderPrizeMessage(message) {
+        console.log('[prize_results.js] renderPrizeMessage - message.id:', message.id, 'Type:', typeof message.id);
         const listItem = document.createElement('li');
         listItem.className = 'prize-item';
 
         let displayTitle = message.title;
-        try {
-            const parsedTitle = JSON.parse(message.title);
-            if (parsedTitle && parsedTitle.title) {
-                displayTitle = parsedTitle.title;
-            }
-        } catch (e) {
-            console.error("Failed to parse message.title as JSON:", e);
-        }
+        // 移除 JSON.parse，因为 message.title 预期是普通字符串
+        // try {
+        //     const parsedTitle = JSON.parse(message.title);
+        //     if (parsedTitle && parsedTitle.title) {
+        //         displayTitle = parsedTitle.title;
+        //     }
+        // } catch (e) {
+        //     console.error("Failed to parse message.title as JSON:", e);
+        // }
         let originalMessageContent = message.rawContent || '无';
-        try {
-            const parsedRawContent = JSON.parse(originalMessageContent);
-            if (parsedRawContent && parsedRawContent.content) {
-                originalMessageContent = parsedRawContent.content;
-            }
-        } catch (e) {
-            // Not a JSON string, or doesn't contain 'content' field, use as is.
-        }
+        // 移除 JSON.parse，因为 originalMessageContent 预期是普通字符串
+        // try {
+        //     const parsedRawContent = JSON.parse(originalMessageContent);
+        //     if (parsedRawContent && parsedRawContent.content) {
+        //         originalMessageContent = parsedRawContent.content;
+        //     }
+        // } catch (e) {
+        //     // Not a JSON string, or doesn't contain 'content' field, use as is.
+        // }
         const thumbDisplay = message.thumb ? `<img src="${message.thumb}" alt="缩略图" class="prize-thumb">` : '';
 
         // 检查当前消息是否已被选中，以设置复选框的初始状态

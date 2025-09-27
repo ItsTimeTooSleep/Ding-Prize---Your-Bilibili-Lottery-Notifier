@@ -1,5 +1,3 @@
-
-
 const PRIZE_SENDER_TYPES = [
     7,  // UP主小助手
     5,  // 系统通知
@@ -91,19 +89,35 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
 // 辅助函数：发送浏览器通知
 async function sendNotification(message, type = 'success', duration = 3000) {
-    const notificationTitle = 'Ding-Prize'; // 浏览器通知的固定标题
-    chrome.notifications.create({
-        type: 'basic',
-        iconUrl: chrome.runtime.getURL('assets/icons/icon48.png'),
-        title: notificationTitle,
-        message: message,
-        priority: 2
+    console.log(`[Notification] Sending notification: ${message}, Type: ${type}`);
+
+    // Check notification permission status
+    chrome.notifications.getPermissionLevel(function(level) {
+        console.log(`[Notification] Current permission level: ${level}`);
+        if (level === 'granted') {
+            const notificationOptions = {
+                type: 'basic',
+                iconUrl: chrome.runtime.getURL('assets/icons/icon48.png'),
+                title: 'Ding-Prize 通知',
+                message: message,
+                priority: 2
+            };
+
+            chrome.notifications.create('', notificationOptions, function(notificationId) {
+                if (chrome.runtime.lastError) {
+                    console.error(`[Notification] Error creating notification: ${chrome.runtime.lastError.message}`);
+                } else {
+                    console.log(`[Notification] Notification created with ID: ${notificationId}`);
+                }
+            });
+        } else {
+            console.warn(`[Notification] Notification permission not granted. Current level: ${level}`);
+            // Optionally, you could try to request permission here, but it's usually better to let the user trigger it.
+            // chrome.notifications.requestPermission(function(permissionLevel) {
+            //     console.log(`[Notification] Permission requested, new level: ${permissionLevel}`);
+            // });
+        }
     });
-    // 同时向 popup 发送消息，以便在 popup 页面显示通知
-    chrome.runtime.sendMessage({ type: "showNotification", notificationType: type, message: message, duration: duration });
-    if (chrome.runtime.lastError) {
-        console.warn("Error sending message to popup, popup might be closed:", chrome.runtime.lastError.message);
-    }
 }
 
 async function checkBiliMessages() {
@@ -282,7 +296,7 @@ async function checkBiliMessages() {
                         console.log(`[Background] extractedRawContent:`, originalRawContent); // Use the stored original raw content
                         console.log(`[Background] 正在构建 prizeInfo 对象...`);
                          const prizeInfo = {
-                             id: uniqueMessageId, // 使用统一的唯一ID
+                             id: message.msg_id ? String(message.msg_id) : (Date.now().toString() + Math.random().toString(36).substring(2, 15)), // 优先使用 Bilibili 消息的 msg_id 作为唯一ID，否则生成一个唯一ID
                              title: extractedTitle,
                              uid: session.talker_id,
                              senderUid: session.talker_id, // 暂时保留，后续会删除
@@ -343,6 +357,10 @@ async function checkBiliMessages() {
         prizeMessages: mergedPrizeMessages // 将合并后的中奖消息存储起来
     }, () => {
         console.log(`[Background] 已将 processedMessages 和 prizeMessages 存储到 local storage。`);
+        // 如果有新的唯一中奖消息，发送通知
+        uniqueNewPrizeMessages.forEach(prize => {
+            sendNotification(`恭喜您中奖啦！奖品：${prize.title}`, 'success');
+        });
     });
     chrome.runtime.sendMessage({ type: "hideNotification" }); // 隐藏“正在检测中...”通知
     chrome.runtime.sendMessage({ type: "updateProgress", status: "completed", message: "检测完成", newPrizeFound: newPrizeFound });
@@ -384,7 +402,7 @@ function containsPrizeKeywords(messageContent, keywords, blacklistKeywords) {
     // 再检查中奖关键词
     if (keywords.some(keyword => messageContent.includes(keyword))) {
         console.log('[containsPrizeKeywords] Message contains prize keyword:', keywords.find(keyword => messageContent.includes(keyword)));
-        return true;
+        return true; // 表示异步响应
     }
     return false;
 }
@@ -425,7 +443,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.storage.local.get(['prizeMessages'], (result) => {
             let prizeMessages = result.prizeMessages || [];
             const initialLength = prizeMessages.length;
-            // Filter out messages whose IDs are in the request.messageIds array
+
+            console.log('[Background] prizeMessages before filter:', prizeMessages.map(msg => ({ id: msg.id, type: typeof msg.id })));
+            console.log('[Background] request.messageIds:', request.messageIds, 'type of first element:', typeof request.messageIds[0]);
+
             prizeMessages = prizeMessages.filter(msg => !request.messageIds.includes(String(msg.id)));
             if (prizeMessages.length < initialLength) {
                 chrome.storage.local.set({ prizeMessages: prizeMessages }, () => {
