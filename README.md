@@ -13,7 +13,7 @@
 
 ---
 
-> **⚠️ 注意：当前为早期测试版本 (v0.2.1)**
+> **⚠️ 注意：当前为早期测试版本 (v0.2.2)**
 > 该版本可能存在未知的Bug，我们非常期待您反馈使用中遇到的问题！请前往 [Issues](https://github.com/ItsTimeTooSleep/Ding-Prize---Your-Bilibili-Lottery-Notifier/issues) 页面创建新的反馈。
 
 ---
@@ -77,7 +77,7 @@
 
 ## 🐛 反馈与贡献
 
-当前版本为 `v0.2.1`，是一个早期测试版，**可能存在诸多未知问题**（如检测失败、误报、通知不触发等）。
+当前版本为 `v0.2.2`，是一个早期测试版，**可能存在诸多未知问题**（如检测失败、误报、通知不触发等）。
 
 您的反馈对我们至关重要！如果您遇到任何问题或有改进建议：
 
@@ -93,11 +93,18 @@
 
 ### ❓ 常见问题
 ❓ 常见问题
+<details> <summary><b>Q: 为什么我没有收到桌面通知？</b></summary> <b>A:</b> 如果您确认扩展程序已正常运行且检测到中奖消息，但仍未收到桌面通知，请检查以下设置：
+    <ul>
+        <li><b>浏览器通知设置：</b> 确保您的浏览器（如 Chrome, Edge）允许“Ding-Prize”扩展发送通知。您可以在浏览器设置中找到“通知”或“网站设置”部分进行检查。</li>
+        <li><b>操作系统通知设置：</b> 确保您的操作系统（Windows, macOS, Linux）没有禁用或静音来自浏览器的通知。检查系统的“通知与操作”或“通知”设置。</li>
+        <li><b>“请勿打扰”模式：</b> 检查您的操作系统是否开启了“请勿打扰”模式或专注模式，这可能会暂时阻止通知的显示。</li>
+    </ul>
+</details>
 <details> <summary><b>Q: 这款扩展收费吗？</b></summary> <b>A:</b> 完全免费和开源。 </details>
 <details> <summary><b>Q: 它需要我的B站密码吗？</b></summary> <b>A:</b> 绝对不需要！扩展的工作原理依赖于您已经登录了B站网页版，它只会访问浏览器中已打开的B站页面所能访问的信息。 </details>
 <details> <summary><b>Q: 扩展会收集我的个人数据吗？</b></summary> <b>A:</b> 不会主动收集。本扩展被设计为在您的浏览器本地运行，所有数据处理都发生在您的设备上。我们没有任何远程服务器用于收集或存储您的个人数据。 </details>
 <details> <summary><b>Q: 扩展的权限为什么需要“读取和更改网站数据”？</b></summary> <b>A:</b> 这是核心功能所必需的。此权限允许扩展访问“https://api.vc.bilibili.com/*”，以获取用户的私信数据。它<strong>仅针对B站相关域名</strong>生效，不会也无法监控您在其他网站上的活动。 </details>
-<details> <summary><b>Q: 支持哪些浏览器？</b></summary> <b>A:</b> 主要支持基于Chromium内核的浏览器（如最新版的Chrome, Edge, Arc等）。Firefox支持情况请查看GitHub页面。 </details>
+<details> <summary><b>Q: 支持哪些浏览器？</b></summary> <b>A:</b> 主要支持基于Chromium内核的浏览器（如最新版的Chrome, Edge, Arc等）。其他浏览器目前没有做相关测验。 </details>
 <details> <summary><b>Q: 会导致黑号吗？</b></summary> <b>A:</b> 不会。本扩展只使用基本私信api，通过私信内容筛选出可能的中奖私信，并不涉及任何自动转发等操作。 </details>
 <details> <summary><b>Q: 我可以参与贡献或提出新功能建议吗？</b></summary> <b>A:</b> 非常欢迎！这是一个开源项目，您可以通过GitHub的Issue或Pull Request功能参与贡献。 </details>
 

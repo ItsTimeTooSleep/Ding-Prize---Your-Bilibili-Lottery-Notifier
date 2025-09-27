@@ -14,7 +14,7 @@ const DEFAULT_SETTINGS = {
         '奖品', '礼物', '赠品'
     ],
     blacklistKeywords: [
-        '合集',
+        '合集', '临期/速看', 'b站抽奖看这里', '预约成功', '已经通过审核', '你的稿件累计播放达到', '恭喜你完成限时任务', '你的粉丝数达到', '您的稿件《','⭐【精选大奖】⭐总计数','超开心，你终于关注G宝了','【假抽奖？】大家一起来判断！本期主角为：'
     ],
     lastCheckedTime: 0,
 };
@@ -268,7 +268,7 @@ async function checkBiliMessages() {
                         console.log(`[Background] 发现潜在中奖消息，内容: ${message.content.substring(0, 100)}...`);
                         console.log(`[Background] 原始 message.content 完整内容:`, message.content);
                         // let parsedContent; // This was declared earlier, no need to redeclare
-                        let extractedTitle = message.content; // Default to raw message content
+                        let extractedTitle = parsedContent.title || parsedContent.item_text || parsedContent.content || message.content;
                         const originalRawContent = message.content; // Store the original raw content
                         let thumb = '';
 
@@ -354,16 +354,32 @@ async function checkBiliMessages() {
     });
     console.log(`[Background] 更新 lastCheckedTime 为: ${new Date(now).toLocaleString()}`);
 
+    // 对 newPrizeMessages 内部进行去重
+    const uniqueNewMessagesInternal = [];
+    const seenMessages = new Set();
+
+    newPrizeMessages.forEach(msg => {
+        const identifier = `${msg.title}-${msg.messageContent}-${msg.timestamp}`;
+        if (!seenMessages.has(identifier)) {
+            uniqueNewMessagesInternal.push(msg);
+            seenMessages.add(identifier);
+        }
+    });
+    newPrizeMessages = uniqueNewMessagesInternal;
+    console.log(`[Background] newPrizeMessages 内部去重后数量: ${newPrizeMessages.length}`);
+
     // 合并新发现的中奖消息与已有的中奖消息
     let existingPrizeMessages = settings.prizeMessages;
     console.log(`[Background] 现有中奖消息数量: ${existingPrizeMessages.length}`);
     const uniqueNewPrizeMessages = newPrizeMessages.filter(newMsg => {
-        // 检查新消息是否已存在于现有消息中 (通过 uid 和 title 判断唯一性)
+        // 检查新消息是否已存在于现有消息中 (通过 title, messageContent 和 timestamp 判断唯一性)
         const isDuplicate = existingPrizeMessages.some(existingMsg =>
-            existingMsg.uid === newMsg.uid && existingMsg.title === newMsg.title
+            existingMsg.title === newMsg.title &&
+            existingMsg.messageContent === newMsg.messageContent &&
+            existingMsg.timestamp === newMsg.timestamp
         );
         if (isDuplicate) {
-            console.log(`[Background] 发现重复消息，跳过添加: ${newMsg.title} (UID: ${newMsg.uid})`);
+            console.log(`[Background] 发现重复消息，跳过添加: ${newMsg.title} (内容: ${newMsg.messageContent.substring(0, 20)}..., 时间: ${new Date(newMsg.timestamp).toLocaleString()})`);
         }
         return !isDuplicate;
     });
