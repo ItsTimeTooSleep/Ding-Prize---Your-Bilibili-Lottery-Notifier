@@ -38,14 +38,17 @@ chrome.runtime.onInstalled.addListener(() => {
         createAlarm(items.checkInterval || DEFAULT_SETTINGS.checkInterval);
     });
 
-    // 初始化 processedMessages 到 local storage
-    chrome.storage.local.get(['processedMessages', 'prizeMessages'], (items) => {
-        if (items.processedMessages === undefined) {
-            chrome.storage.local.set({ processedMessages: [] });
-        }
-        if (items.prizeMessages === undefined) {
-            chrome.storage.local.set({ prizeMessages: [] });
-        }
+    // 插件安装时初始化设置
+    chrome.runtime.onInstalled.addListener(() => {
+        chrome.storage.sync.set(DEFAULT_SETTINGS);
+        // 初始化 processedMessages 到 sync storage
+        chrome.storage.sync.get(['processedMessages'], (items) => {
+            if (items.processedMessages === undefined) {
+                chrome.storage.sync.set({ processedMessages: [] });
+            }
+        });
+        // 清除 local storage 中的 processedMessages
+        chrome.storage.local.remove('processedMessages');
     });
 });
 
@@ -89,7 +92,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
 // 辅助函数：发送浏览器通知
 async function sendNotification(message, type = 'success', duration = 3000, notificationId = null) {
-    console.log(`[Notification] Sending notification: ${message}, Type: ${type}`);
+    console.log(`[Notification] Attempting to send notification: ${message}, Type: ${type}, ID: ${notificationId}`);
 
     // Check notification permission status
     chrome.notifications.getPermissionLevel(function(level) {
@@ -104,28 +107,26 @@ async function sendNotification(message, type = 'success', duration = 3000, noti
             };
 
             if (notificationId) {
-                chrome.notifications.create(notificationId, options, function(notificationId) {
+                console.log(`[Notification] Creating notification with specific ID: ${notificationId}`);
+                chrome.notifications.create(notificationId, options, function(createdId) {
                     if (chrome.runtime.lastError) {
                         console.error(`[Notification] Error creating notification with ID ${notificationId}:`, chrome.runtime.lastError.message);
                     } else {
-                        console.log(`[Notification] Notification created with ID: ${notificationId}`);
+                        console.log(`[Notification] Notification created with ID: ${createdId}`);
                     }
                 });
             } else {
-                chrome.notifications.create(options, function(notificationId) {
+                console.log(`[Notification] Creating notification with auto-generated ID.`);
+                chrome.notifications.create(options, function(createdId) {
                     if (chrome.runtime.lastError) {
                         console.error(`[Notification] Error creating notification:`, chrome.runtime.lastError.message);
                     } else {
-                        console.log(`[Notification] Notification created with ID: ${notificationId}`);
+                        console.log(`[Notification] Notification created with ID: ${createdId}`);
                     }
                 });
             }
         } else {
-            console.warn(`[Notification] Notification permission not granted. Current level: ${level}`);
-            // Optionally, you could try to request permission here, but it's usually better to let the user trigger it.
-            // chrome.notifications.requestPermission(function(permissionLevel) {
-            //     console.log(`[Notification] Permission requested, new level: ${permissionLevel}`);
-            // });
+            console.warn(`[Notification] Notification permission not granted. Current level: ${level}. Cannot send notification: ${message}`);
         }
     });
 }
@@ -136,21 +137,26 @@ async function checkBiliMessages() {
     sendNotification('正在检测中...', 'info', 0, checkingNotificationId); // 发送“正在检测中...”通知，不自动隐藏
     chrome.runtime.sendMessage({ type: "updateProgress", status: "started", message: "正在初始化检测..." });
 
+    // 向 popup.js 发送消息，显示内部通知
+    chrome.runtime.sendMessage({ type: "showNotification", message: "正在检测中...", notificationType: "success" });
+
     let newPrizeFound = false;
     let prizeMessages = await getPrizeMessages();
     let lastCheckTime = await getSetting('lastCheckTime', 0);
 
     const settings = await new Promise(resolve => {
         chrome.storage.sync.get(['enabled', 'checkInterval', 'prizeKeywords', 'lastCheckedTime', 'blacklistKeywords'], (syncItems) => {
-            chrome.storage.local.get(['processedMessages', 'prizeMessages'], (localItems) => {
-                resolve({
-                    enabled: syncItems.enabled !== undefined ? syncItems.enabled : DEFAULT_SETTINGS.enabled,
-                    checkInterval: syncItems.checkInterval || DEFAULT_SETTINGS.checkInterval,
-                    prizeKeywords: syncItems.prizeKeywords !== undefined ? syncItems.prizeKeywords : DEFAULT_SETTINGS.prizeKeywords.join('\n'),
-                    lastCheckedTime: syncItems.lastCheckedTime || DEFAULT_SETTINGS.lastCheckedTime,
-                    processedMessages: localItems.processedMessages || [],
-                    prizeMessages: localItems.prizeMessages || [],
-                    blacklistKeywords: syncItems.blacklistKeywords !== undefined ? syncItems.blacklistKeywords : DEFAULT_SETTINGS.blacklistKeywords // 获取黑名单关键词
+            chrome.storage.sync.get(['processedMessages'], (syncProcessedItems) => { // 从 sync 获取 processedMessages
+                chrome.storage.local.get(['prizeMessages'], (localPrizeItems) => { // prizeMessages 仍在 local
+                    resolve({
+                        enabled: syncItems.enabled !== undefined ? syncItems.enabled : DEFAULT_SETTINGS.enabled,
+                        checkInterval: syncItems.checkInterval || DEFAULT_SETTINGS.checkInterval,
+                        prizeKeywords: syncItems.prizeKeywords !== undefined ? syncItems.prizeKeywords : DEFAULT_SETTINGS.prizeKeywords.join('\n'),
+                        lastCheckedTime: syncItems.lastCheckedTime || DEFAULT_SETTINGS.lastCheckedTime,
+                        processedMessages: syncProcessedItems.processedMessages || [], // 从 syncProcessedItems 获取
+                        prizeMessages: localPrizeItems.prizeMessages || [], // 从 localPrizeItems 获取
+                        blacklistKeywords: syncItems.blacklistKeywords !== undefined ? syncItems.blacklistKeywords : DEFAULT_SETTINGS.blacklistKeywords // 获取黑名单关键词
+                    });
                 });
             });
         });
@@ -320,7 +326,7 @@ async function checkBiliMessages() {
                          };
                          newPrizeMessages.push(prizeInfo);
                         console.log(`[Background] 已识别中奖消息并添加到 newPrizeMessages:`, prizeInfo);
-                        settings.processedMessages.push(uniqueMessageId); // 使用统一的唯一ID
+                        settings.processedMessages.push(prizeInfo.id); // 使用 prizeInfo.id 作为唯一ID
                         newPrizeFound = true; // 标记发现新的中奖消息
                     } else if (currentBlacklistKeywords.some(blackword => message.content.includes(blackword))) {
                         console.log(`[Background] 消息被黑名单关键词过滤: ${message.content.substring(0, 50)}...`);
@@ -366,17 +372,28 @@ async function checkBiliMessages() {
     const mergedPrizeMessages = [...existingPrizeMessages, ...uniqueNewPrizeMessages];
     console.log(`[Background] 合并后中奖消息总数: ${mergedPrizeMessages.length}`);
 
-    chrome.storage.local.set({
-        processedMessages: settings.processedMessages,
-        prizeMessages: mergedPrizeMessages // 将合并后的中奖消息存储起来
-    }, () => {
-        console.log(`[Background] 已将 processedMessages 和 prizeMessages 存储到 local storage。`);
-        // 如果有新的唯一中奖消息，发送通知
-        uniqueNewPrizeMessages.forEach(prize => {
-            sendNotification(`恭喜您中奖啦！奖品：${prize.title}`, 'success');
+    // 存储更新后的 processedMessages 和 prizeMessages
+    chrome.storage.sync.set({ processedMessages: settings.processedMessages, lastCheckedTime: Date.now() }, () => {
+        chrome.storage.local.set({ prizeMessages: mergedPrizeMessages }, () => {
+            console.log(`[Background] 已将 processedMessages 存储到 sync storage，prizeMessages 存储到 local storage。`);
+            chrome.runtime.sendMessage({ type: "updateProgress", status: "completed", message: "检测完成。" });
+            chrome.runtime.sendMessage({ type: "hideNotification" }); // 隐藏 popup 内部通知
+            chrome.notifications.clear(checkingNotificationId, (wasCleared) => {
+                if (chrome.runtime.lastError) {
+                    console.error(`[Notification] Error clearing notification:`, chrome.runtime.lastError.message);
+                } else if (!wasCleared) {
+                    console.log(`[Notification] '${checkingNotificationId}' notification was not found or could not be cleared.`);
+                }
+            });
+            // 如果有新的唯一中奖消息，发送通知
+            uniqueNewPrizeMessages.forEach(prize => {
+                sendNotification(`恭喜您中奖啦！奖品：${prize.title}`, 'success');
+            });
         });
     });
-    chrome.runtime.sendMessage({ type: "hideNotification" }); // 隐藏“正在检测中...”通知
+
+    // 隐藏“正在检测中...”通知
+    chrome.runtime.sendMessage({ type: "hideNotification" });
     chrome.runtime.sendMessage({ type: "updateProgress", status: "completed", message: "检测完成", newPrizeFound: newPrizeFound });
     console.log(`[Background] 发送检测完成通知。`);
     // 检测完成后，将 isChecking 状态设置为 false
@@ -483,20 +500,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
                 chrome.storage.local.set({ prizeMessages }, () => {
                     console.log('[Background] Updated prizeMessages in local storage. New length:', prizeMessages.length);
-                    // 同时更新 chrome.storage.sync 中的 processedMessages
+                    // 将更新后的 processedMessages 保存回 sync storage
                     chrome.storage.sync.set({ processedMessages }, () => {
-                        console.log('[Background] Updated processedMessages in sync storage:', processedMessages);
-                        if (prizeMessages.length !== initialLength) {
-                            sendResponse({ status: "success", message: "Prize messages deleted successfully." });
-                            // 通知 prize_results.js 刷新页面
-                            chrome.runtime.sendMessage({ type: "refreshPrizeResults" });
-                        } else {
-                            sendResponse({ status: "no_change", message: "No matching prize messages found for deletion." });
-                        }
+                        console.log('[Background] Updated processedMessages in sync storage.');
+                        // 在所有存储操作完成后，发送响应并通知 prize_results.js 刷新页面
+                        sendResponse({ status: "success", message: "Prize messages deleted successfully." });
+                        chrome.runtime.sendMessage({ type: "refreshPrizeResults" });
                     });
                 });
             });
         });
+        return true; // Indicates that sendResponse will be called asynchronously
+    } else if (request.action === "clearAllData") {
+        chrome.storage.sync.set({ enabled: false });
+        chrome.runtime.sendMessage({ type: "updateProgress", status: "disabled", message: "插件已禁用。" });
+        chrome.runtime.sendMessage({ type: "hideNotification" });
+        return true; // Indicates that sendResponse will be called asynchronously
+    } else {
+        chrome.runtime.sendMessage({ type: "hideNotification" });
+        chrome.runtime.sendMessage({ type: "updateProgress", status: "disabled", message: "插件已禁用。" });
+        chrome.runtime.sendMessage({ type: "hideNotification" });
         return true; // Indicates that sendResponse will be called asynchronously
     }
 });
