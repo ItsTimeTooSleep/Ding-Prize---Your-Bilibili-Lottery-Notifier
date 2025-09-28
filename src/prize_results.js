@@ -1,5 +1,8 @@
+import { setupDeleteEventListeners } from './deleteHandler.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const prizeMessagesList = document.getElementById('all-prize-messages-list');
+    console.log('prizeMessagesList element:', prizeMessagesList); // Add this line
     const backButton = document.getElementById('back-to-popup');
 
     // Custom Confirm Dialog elements
@@ -44,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
             checkbox.addEventListener('change', () => handleCheckboxChange(checkbox, message.id));
         }
 
-        deleteButton.addEventListener('click', () => {
-            deletePrize(message.id);
-        });
+        // deleteButton.addEventListener('click', () => {
+        //     deletePrize(message.id);
+        // });
 
         copyButton.addEventListener('click', () => {
             copyPrizeInfo(message);
@@ -77,10 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (allPrizeMessages.length === 0) {
+                console.log('updateNoPrizesMessageVisibility: No prize messages. Displaying "no-prizes-message".'); // Add this line
                 document.getElementById('no-prizes-message').style.display = 'block';
                 prizeMessagesList.style.display = 'none';
                 batchActionsContainer.style.display = 'none'; // Hide batch actions if no prizes
             } else {
+                console.log('updateNoPrizesMessageVisibility: Prize messages exist. Hiding "no-prizes-message".'); // Add this line
                 document.getElementById('no-prizes-message').style.display = 'none';
                 prizeMessagesList.style.display = 'block';
                 updateBatchActions(); // Update batch actions visibility
@@ -96,13 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 新增函数：加载并渲染中奖消息
     function loadAndRenderPrizeMessages() {
+        console.log('loadAndRenderPrizeMessages called.'); // Add this line
         prizeMessagesList.innerHTML = ''; // 清空现有列表
+        console.log('prizeMessagesList cleared. Current innerHTML:', prizeMessagesList.innerHTML); // Add this line
         selectedPrizeIds = []; // 清空选中项
 
         chrome.storage.local.get(['prizeMessages'], (result) => {
             const allPrizeMessages = result.prizeMessages || [];
 
             if (allPrizeMessages.length === 0) {
+                console.log('No prize messages found. Displaying "no-prizes-message".'); // Add this line
                 document.getElementById('no-prizes-message').style.display = 'block';
                 prizeMessagesList.style.display = 'none';
                 batchActionsContainer.style.display = 'none';
@@ -138,15 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function copyPrizeInfo(prize) {
-        const prizeInfo = `
-标题: ${prize.title}
-UID: ${prize.uid}
-缩略图: ${prize.thumb || 'N/A'}
-发送者昵称: ${prize.senderName || 'N/A'}
-消息内容: ${prize.messageContent || 'N/A'}
-时间: ${new Date(prize.timestamp).toLocaleString()}
-原始消息: ${prize.rawContent || 'N/A'}
-`;
+        const prizeInfo = `\n标题: ${prize.title}\nUID: ${prize.uid}\n缩略图: ${prize.thumb || 'N/A'}\n发送者昵称: ${prize.senderName || 'N/A'}\n消息内容: ${prize.messageContent || 'N/A'}\n时间: ${new Date(prize.timestamp).toLocaleString()}\n原始消息: ${prize.rawContent || 'N/A'}\n`;
         navigator.clipboard.writeText(prizeInfo).then(() => {
             alert('完整中奖信息已复制到剪贴板！');
         }).catch(err => {
@@ -155,53 +155,13 @@ UID: ${prize.uid}
     }
 
 
-    function deletePrize(prizeId) {
-        showCustomConfirm(`确定要删除此中奖消息吗？`).then(confirmed => {
-            if (confirmed) {
-                chrome.runtime.sendMessage({ action: 'deletePrizeMessage', messageId: prizeId }, (response) => {
-                    if (response && response.success) {
-                        // Remove the item from the DOM
-                        const itemToRemove = document.querySelector(`.prize-item input[data-prize-id="${prizeId}"]`).closest('.prize-item');
-                        if (itemToRemove) {
-                            itemToRemove.classList.add('deleting');
-                            setTimeout(() => {
-                                itemToRemove.remove();
-                                // Remove from selectedPrizeIds if it was selected
-                                selectedPrizeIds = selectedPrizeIds.filter(id => id !== prizeId);
-                                updateNoPrizesMessageVisibility();
-                                updateBatchActions(); // Update batch actions after deletion
-                            }, 200); // Match CSS animation duration, changed from 400 to 200
-                        }
-                    }
-                });
-            }
-        });
-    }
+    // 获取DOM元素
+    // const prizeMessagesList = document.getElementById('prize-messages-list');
+    // const noPrizesMessage = document.getElementById('no-prizes-message');
+    // const selectAllCheckbox = document.getElementById('select-all-prizes');
+    // const batchActionsContainer = document.getElementById('batch-actions');
+    // const deleteSelectedButton = document.getElementById('delete-selected-prizes');
 
-    // 更新批量操作按钮状态
-    function updateBatchActions() {
-        if (selectedPrizeIds.length >= 2) {
-            batchActionsContainer.style.display = 'flex';
-            deleteSelectedButton.disabled = false;
-        } else {
-            batchActionsContainer.style.display = 'none';
-            deleteSelectedButton.disabled = true;
-        }
-        
-        // 更新全选复选框状态
-        const allCheckboxes = document.querySelectorAll('.prize-checkbox');
-        const allChecked = allCheckboxes.length > 0 && Array.from(allCheckboxes).every(checkbox => checkbox.checked);
-        selectAllCheckbox.checked = allChecked;
-
-        // 如果没有中奖消息，也隐藏批量操作栏
-        chrome.storage.local.get(['prizeMessages'], (result) => {
-            const prizeMessages = result.prizeMessages || [];
-            if (prizeMessages.length === 0) {
-                batchActionsContainer.style.display = 'none';
-            }
-        });
-    }
-    
     // 修改渲染逻辑，添加复选框
     function renderPrizeMessage(message) {
         console.log('[prize_results.js] renderPrizeMessage - message.id:', message.id, 'Type:', typeof message.id);
@@ -233,23 +193,7 @@ UID: ${prize.uid}
         // 检查当前消息是否已被选中，以设置复选框的初始状态
         const isSelected = selectedPrizeIds.includes(message.id);
 
-        listItem.innerHTML = `
-            <div class="prize-item-header">
-                <input type="checkbox" class="prize-checkbox" data-prize-id="${message.id}" ${isSelected ? 'checked' : ''}>
-                <p><strong>标题:</strong> ${displayTitle}</p>
-            </div>
-            <div class="message-content">
-                <p><strong>UID:</strong> ${message.uid}</p>
-                <p><strong>原始消息:</strong> ${originalMessageContent}</p>
-                <p><strong>时间:</strong> ${new Date(message.timestamp).toLocaleString()}</p>
-                ${thumbDisplay}
-            </div>
-            <div class="actions">
-                <button class="delete-button" data-id="${message.id}"><i class="fas fa-trash-alt"></i> 删除</button>
-                <button class="copy-button" data-id="${message.id}"><i class="fas fa-copy"></i> 复制</button>
-                <button class="visit-button" data-uid="${message.uid}"><i class="fas fa-external-link-alt"></i> 访问</button>
-            </div>
-        `;
+        listItem.innerHTML = `\n            <div class="prize-item-header">\n                <input type="checkbox" class="prize-checkbox" data-prize-id="${message.id}" ${isSelected ? 'checked' : ''}>\n                <p><strong>标题:</strong> ${displayTitle}</p>\n            </div>\n            <div class="message-content">\n                <p><strong>UID:</strong> ${message.uid}</p>\n                <p><strong>原始消息:</strong> ${originalMessageContent}</p>\n                <p><strong>时间:</strong> ${new Date(message.timestamp).toLocaleString()}</p>\n                ${thumbDisplay}\n            </div>\n            <div class="actions">\n                <button class="delete-button" data-id="${message.id}"><i class="fas fa-trash-alt"></i> 删除</button>\n                <button class="copy-button" data-id="${message.id}"><i class="fas fa-copy"></i> 复制</button>\n                <button class="visit-button" data-uid="${message.uid}"><i class="fas fa-external-link-alt"></i> 访问</button>\n            </div>\n        `;
 
         // 移除此处的复选框事件绑定，因为 bindMessageItemEvents 会处理
         // const checkbox = listItem.querySelector('.prize-checkbox');
@@ -291,34 +235,39 @@ UID: ${prize.uid}
         updateBatchActions();
     });
 
-    // 处理删除选中按钮
-    deleteSelectedButton.addEventListener('click', () => {
-        console.log('deleteSelectedButton click event fired.'); // Add this line
-        showCustomConfirm(`确定要删除选中的 ${selectedPrizeIds.length} 条中奖消息吗？`).then(confirmed => {
-            if (confirmed) {
-                console.log('Before sending deletePrizeMessages, selectedPrizeIds:', selectedPrizeIds);
-                chrome.runtime.sendMessage({
-                    action: 'deletePrizeMessages',
-                    messageIds: selectedPrizeIds
-                }, (response) => {
-                    if (response && response.success) {
-                        // Remove all selected items from the DOM
-                        selectedPrizeIds.forEach(prizeId => {
-                            const itemToRemove = document.querySelector(`.prize-item input[data-prize-id="${prizeId}"]`)?.closest('.prize-item');
-                            if (itemToRemove) {
-                                itemToRemove.classList.add('deleting');
-                                setTimeout(() => {
-                                    itemToRemove.remove();
-                                }, 200);
-                            }
-                        });
-                        
-                        selectedPrizeIds = [];
+    // 移除处理删除选中按钮的逻辑
+    // deleteSelectedButton.addEventListener('click', () => { ... });
+
+    // 定义 updateBatchActions 函数
+    function updateBatchActions() {
+        if (selectedPrizeIds.length > 0) {
+            batchActionsContainer.style.display = 'flex';
+            deleteSelectedButton.disabled = false;
+        } else {
+            batchActionsContainer.style.display = 'none';
+            deleteSelectedButton.disabled = true;
+        }
+    }
+
+    // 初始化删除事件监听器
+    setupDeleteEventListeners(
+        document, // 监听整个文档，因为删除按钮可能动态添加
+        () => selectedPrizeIds, // 获取选中ID的函数
+        (deletedIds) => {
+            // UI更新逻辑：移除DOM元素
+            deletedIds.forEach(prizeId => {
+                const itemToRemove = document.querySelector(`.prize-item input[data-prize-id="${prizeId}"]`)?.closest('.prize-item');
+                if (itemToRemove) {
+                    itemToRemove.classList.add('deleting');
+                    setTimeout(() => {
+                        itemToRemove.remove();
+                        // 从 selectedPrizeIds 中移除已删除的ID
+                        selectedPrizeIds = selectedPrizeIds.filter(id => id !== prizeId);
                         updateNoPrizesMessageVisibility();
-                        updateBatchActions();
-                    }
-                });
-            }
-        });
-    });
+                    }, 200);
+                }
+            });
+        },
+        updateBatchActions // 更新批量操作按钮状态
+    );
 });

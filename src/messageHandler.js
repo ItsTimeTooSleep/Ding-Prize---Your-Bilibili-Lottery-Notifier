@@ -1,21 +1,13 @@
 import { showCustomConfirm } from './customConfirm.js';
 import { updatePopup } from './statusUpdater.js';
+import { handleDeletePrizeMessages } from './deleteHandler.js';
 
 export function bindMessageItemEvents(item, msg) {
+
     // 为删除按钮绑定事件
     item.querySelector('.delete-button').onclick = (event) => {
         event.stopPropagation(); // 阻止事件冒泡
-        showCustomConfirm('确定要删除这条中奖记录吗？').then(confirmed => {
-            if (confirmed) {
-                chrome.storage.local.get(['prizeMessages'], (items) => {
-                    let currentPrizeMessages = items.prizeMessages || [];
-                    currentPrizeMessages = currentPrizeMessages.filter(m => !(m.title === msg.title && m.uid === msg.uid));
-                    chrome.storage.local.set({ prizeMessages: currentPrizeMessages }, () => {
-                        updatePopup(); // Refresh popup to reflect changes
-                    });
-                });
-            }
-        });
+        handleDeletePrizeMessages([msg.id], updatePopup);
     };
 
     // 为复制按钮绑定事件
