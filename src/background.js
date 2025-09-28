@@ -433,6 +433,8 @@ async function checkBiliMessages() {
 
     // 隐藏“正在检测中...”通知
     chrome.runtime.sendMessage({ type: "hideNotification" });
+    // 只有当有新的唯一中奖消息时，才将 newPrizeFound 设置为 true
+    newPrizeFound = uniqueNewPrizeMessages.length > 0;
     chrome.runtime.sendMessage({ type: "updateProgress", status: "completed", message: "检测完成", newPrizeFound: newPrizeFound });
     console.log(`[Background] 发送检测完成通知。`);
     // 检测完成后，将 isChecking 状态设置为 false

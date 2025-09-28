@@ -26,11 +26,11 @@ export function setupEventListeners() {
         } else if (request.action === 'updatePopup') {
             updatePopup();
             sendResponse({ status: 'Popup updated' });
-        } else if (request.type === "showNotification\") {
+        } else if (request.type === "showNotification") {
             // 处理来自 background.js 的通知消息
-            showNotification(request.message, request.notificationType);\
+            showNotification(request.message, request.notificationType);
             sendResponse({ status: 'Notification shown' });
-        } else if (request.type === \"hideNotification\") {
+        } else if (request.type === "hideNotification") {
             hideNotification();
             sendResponse({ status: 'Notification hidden' });
         }
@@ -46,9 +46,9 @@ export function setupEventListeners() {
 
     // 监听来自 background.js 的消息
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        if (request.type === "showNotification\") {
+        if (request.type === "showNotification") {
             showNotification(request.message, request.notificationType);
-        } else if (request.type === "updateProgress\") {
+        } else if (request.type === "updateProgress") {
             // 处理进度更新消息
             // updateProgress(request.status, request.message);
             if (request.newPrizeFound) {
