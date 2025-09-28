@@ -1,3 +1,4 @@
+//background.js
 const PRIZE_SENDER_TYPES = [
     7,  // UP主小助手
     5,  // 系统通知
