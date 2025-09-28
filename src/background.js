@@ -21,6 +21,18 @@ const DEFAULT_SETTINGS = {
     lastCheckedTime: 0,
 };
 
+let blockedUids = [];
+
+async function loadBlockedUids() {
+    return new Promise((resolve) => {
+        chrome.storage.sync.get('blockedUids', (items) => {
+            blockedUids = items.blockedUids || [];
+            console.log('[Background] Loaded Blocked UIDs:', blockedUids);
+            resolve();
+        });
+    });
+}
+
 // 初始化设置
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.get(['enabled', 'checkInterval', 'prizeKeywords', 'blacklistKeywords'], (items) => {
@@ -39,6 +51,8 @@ chrome.runtime.onInstalled.addListener(() => {
         // 创建或更新定时任务
         createAlarm(items.checkInterval || DEFAULT_SETTINGS.checkInterval);
     });
+
+    loadBlockedUids(); // Load blocked UIDs on install
 
     // 插件安装时初始化设置
     chrome.runtime.onInstalled.addListener(() => {
@@ -134,6 +148,7 @@ async function sendNotification(message, type = 'success', duration = 3000, noti
 }
 
 async function checkBiliMessages() {
+    await loadBlockedUids(); // Load blocked UIDs before checking messages
     console.log('开始检测B站私信...');
     const checkingNotificationId = 'bili-checking-notification'; // 定义一个唯一的通知ID
     sendNotification('正在检测中...', 'info', 0, checkingNotificationId); // 发送“正在检测中...”通知，不自动隐藏
@@ -223,6 +238,12 @@ async function checkBiliMessages() {
     let newPrizeMessages = [];
 
     for (const session of allSessions) {
+        // 检查发送者 UID 是否被屏蔽
+        if (blockedUids.includes(String(session.talker_id))) {
+            console.log(`[Background] Skipping messages from blocked UID: ${session.talker_id}`);
+            continue; // 跳过此会话
+        }
+
         // 过滤掉非重点监控的发送者类型
         if (!isPrizeSenderType(session.session_type)) {
             continue;

@@ -69,6 +69,21 @@
                 </div>
             </div>
 
+            <div class="setting-group fade-in" style="animation-delay: 0.4s;">
+                <div class="setting-title">
+                    <i class="fas fa-user-slash"></i>
+                    <span>屏蔽用户UID</span>
+                </div>
+                <div class="input-group">
+                    <label for="blocked-uid-input">屏蔽用户UID (每行一个)</label>
+                    <textarea id="blocked-uid-input" placeholder="例如: 123456789&#10;987654321"></textarea>
+                    <div class="hint">来自这些UID的私信消息将被忽略</div>
+                </div>
+                <ul id="blocked-uids-list" class="tag-list">
+                    <!-- 已屏蔽的UID将在这里动态加载 -->
+                </ul>
+            </div>
+
             <div class="button-group">
                 <button id="save-settings">
                     <i class="fas fa-save"></i>
