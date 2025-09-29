@@ -1,4 +1,5 @@
 //background.js
+importScripts('updateChecker.js');
 const PRIZE_SENDER_TYPES = [
     7,  // UP主小助手
     5,  // 系统通知
@@ -15,7 +16,7 @@ const DEFAULT_SETTINGS = {
         '奖品', '礼物', '赠品'
     ],
     blacklistKeywords: [
-        '合集', '临期/速看', 'b站抽奖看这里', '预约成功', '已经通过审核', '你的稿件累计播放达到', '恭喜你完成限时任务', '你的粉丝数达到', '您的稿件《','⭐【精选大奖】⭐总计数','超开心，你终于关注','【假抽奖？】大家一起来判断！本期主角为：','恭喜宝子加入盼盼大家庭俱乐部','恭喜您，成功触发隐藏任务！','用心做视频，没你不行'
+        '合集', '临期/速看', 'b站抽奖看这里', '预约成功', '已经通过审核', '你的稿件累计播放达到', '恭喜你完成限时任务', '你的粉丝数达到', '您的稿件《','⭐【精选大奖】⭐总计数','超开心，你终于关注','【假抽奖？】大家一起来判断！本期主角为：','恭喜宝子加入盼盼大家庭俱乐部','恭喜您，成功触发隐藏任务！','用心做视频，没你不行','你来啦~谢谢关注！','感谢关注！可以加我个人',' 感谢伯爵大人的关注，期待与您在'
  // 以后可能把prizekeywords和blacklist单独放到一个文件里，方便管理，和方便切换配置
 
     ],
@@ -54,19 +55,7 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 
     loadBlockedUids(); // Load blocked UIDs on install
-
-    // 插件安装时初始化设置
-    chrome.runtime.onInstalled.addListener(() => {
-        chrome.storage.sync.set(DEFAULT_SETTINGS);
-        // 初始化 processedMessages 到 sync storage
-        chrome.storage.sync.get(['processedMessages'], (items) => {
-            if (items.processedMessages === undefined) {
-                chrome.storage.sync.set({ processedMessages: [] });
-            }
-        });
-        // 清除 local storage 中的 processedMessages
-        chrome.storage.local.remove('processedMessages');
-    });
+    checkForUpdates(); // Check for updates on install
 });
 
 // 监听设置变化，更新定时任务

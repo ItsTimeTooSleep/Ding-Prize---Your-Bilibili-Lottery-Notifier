@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ding-Prize 有新版本啦ヾ(•ω•`)o</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* width: 420px; */ /* Removed fixed width */
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+        }
+        
+        .container {
+            flex: 1;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            max-width: 420px; /* Set max-width for responsiveness */
+            width: 100%; /* Ensure it takes full width up to max-width */
+            margin: 0 auto; /* Center the container */
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 22px; /* Reduced from 24px to prevent truncation */
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap; /* Ensure title is on a single line */
+            overflow: hidden; /* Hide overflow if it's too long */
+            text-overflow: ellipsis; /* Add ellipsis for overflow */
+        }
+        
+        h1::before {
+            /* content: "🔄"; */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f021"; /* fa-sync-alt */
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            color: var(--gray-color);
+            font-size: 18px; /* Increased from 16px */
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.7); /* Frosted glass background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            font-size: 18px; /* Increased for general text in card */
+            animation: card-appear 0.5s ease-out forwards; /* Card appear animation */
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card-title {
+            font-size: 22px; /* Increased from 20px */
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-title::before {
+            /* content: "📦"; */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f49e"; /* fa-box-open */
+            font-size: 20px; /* Increased from 18px */
+        }
+        
+        .update-info p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+            /* Removed display: flex for left alignment */
+            /* align-items: flex-start; */ /* Removed for left alignment */
+            font-size: 18px; /* Increased from 16px */
+            text-align: left; /* Ensure text is left-aligned */
+        }
+        
+        .update-info strong {
+            color: var(--dark-color);
+            min-width: 100px; /* Adjusted min-width */
+            display: inline-block;
+        }
+        
+        .update-info pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px; /* Increased from 15px */
+            line-height: 1.5;
+            margin-top: 10px;
+            max-height: 150px;
+            overflow-y: auto;
+            text-align: left; /* Ensure preformatted text is left-aligned */
+        }
+        
+        .update-info .version {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .update-info .date {
+            color: var(--success-color);
+        }
+        
+        .update-info .size {
+            color: var(--warning-color);
+        }
+        
+        #updateStatus {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 123, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes card-appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .no-update {
+            color: var(--gray-color);
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .no-update::before {
+            content: "✅";
+            font-size: 48px;
+            display: block;
+            margin-bottom: 16px;
+        }
+        
+        .button-container {
+            margin-top: auto;
+            padding: 16px 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-direction: row-reverse; /* Reverse order to put close button on left */
+        }
+        
+        .update-button {
+            background: linear-gradient(to right, var(--primary-color), #0056b3);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        
+        .update-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+        }
+        
+        .update-button:active {
+            transform: translateY(0);
+        }
+        
+        .update-button.success {
+            background: linear-gradient(to right, var(--success-color), #1e7e34);
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+        }
+        
+        .update-button.success:hover {
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+        }
+        
+        .update-button::before {
+            /* content: "⬇️"; */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f019"; /* fa-download */
+        }
+        
+        #closeButton::before {
+            /* content: "❌"; */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f00d"; /* fa-times */
+        }
+        
+        .features {
+            margin-top: 20px;
+        }
+        
+        .features h3 {
+            font-size: 20px; /* Increased from 18px */
+            margin-bottom: 12px;
+            color: var(--dark-color);
+        }
+        
+        .features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            /* Removed display: flex for left alignment */
+            /* align-items: center; */ /* Removed for left alignment */
+            gap: 8px;
+            font-size: 17px; /* Increased from 15px */
+            text-align: left; /* Ensure text is left-aligned */
+        }
+        
+        .features li::before {
+            /* content: "✨"; */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f005"; /* fa-star */
+        }
+        
+        .features li:last-child {
+            border-bottom: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 14px; /* Increased from 13px */
+            color: var(--gray-color);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: var(--gray-color);
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ding-Prize 有新版本啦ヾ(•ω•`)o</h1>
+            <p class="subtitle">插件有更新啦，及时升级以享受全新的惊喜体验哦。</p>
+        </header>
+        
+
+        
+        <div id="updateStatus">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>正在检查更新...</p>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button id="closeButton" class="update-button">暂时不用啦</button>
+
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/itstimetoosleep/Ding-Prize---Your-Bilibili-Lottery-Notifier" target="_blank" title="GitHub项目"><i class="fab fa-github"></i></a>
+            <a href="https://afdian.net/itstimetoosleep" target="_blank" title="爱发电赞助"><i class="fas fa-heart"></i></a>
+            <a href="https://space.bilibili.com/3546761664661567" target="_blank" title="凌晨四点的睡教觉主的Bilibili空间"><i class="fab fa-bilibili"></i></a>
+        </div>
+        <p>Ding-Prize &copy; 2025 | 所有权利保留</p>
+    </footer>
+    
+
+    <script src="update.js"></script>
+</body>
+</html>
