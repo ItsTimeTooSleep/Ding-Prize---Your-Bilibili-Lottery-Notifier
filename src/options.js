@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const blacklistKeywordsTextarea = document.getElementById('blacklist-keywords');
     const saveSettingsButton = document.getElementById('save-settings');
     const statusMessage = document.getElementById('status-message');
+    const autoUpdateSwitch = document.getElementById('auto-update-switch'); // Get reference to the new switch
+    const manualCheckUpdateButton = document.getElementById('manual-check-update'); // Get reference to the new button
 
     // 新增屏蔽UID相关DOM元素
     const blockedUidInput = document.getElementById('blocked-uid-input');
@@ -14,12 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 加载设置
     function loadSettings() {
-        chrome.storage.sync.get(['enabled', 'checkInterval', 'prizeKeywords', 'blacklistKeywords', 'blockedUids'], (items) => {
+        chrome.storage.sync.get(['enabled', 'checkInterval', 'prizeKeywords', 'blacklistKeywords', 'blockedUids', 'autoUpdateCheck'], (items) => { // Add autoUpdateCheck
             enabledSwitch.checked = items.enabled !== false; // 默认启用
             checkIntervalInput.value = items.checkInterval || 24; // 默认24小时 (每天一次)
             prizeKeywordsTextarea.value = items.prizeKeywords || '中奖\n恭喜\n获奖\n抽奖\n填写地址\n收货地址\n奖品\n礼物';
             blacklistKeywordsTextarea.value = items.blacklistKeywords || '';
             blockedUidInput.value = (items.blockedUids && items.blockedUids.length > 0) ? items.blockedUids.join('\n') : '';
+            autoUpdateSwitch.checked = items.autoUpdateCheck !== false; // Default to true
         });
     }
 
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const prizeKeywords = prizeKeywordsTextarea.value;
         const blacklistKeywords = blacklistKeywordsTextarea.value;
         const blockedUids = blockedUidInput.value.split('\n').map(s => s.trim()).filter(s => s.length > 0);
+        const autoUpdateCheck = autoUpdateSwitch.checked; // Get autoUpdateCheck value
 
         if (isNaN(checkInterval) || checkInterval < 1 || checkInterval > 168) {
             statusMessage.textContent = '检测频率必须是1到168之间的数字（即最多7天）！';
@@ -102,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
             checkInterval: checkInterval,
             prizeKeywords: prizeKeywords,
             blacklistKeywords: blacklistKeywords,
-            blockedUids: blockedUids // 保存屏蔽UID列表
+            blockedUids: blockedUids, // 保存屏蔽UID列表
+            autoUpdateCheck: autoUpdateCheck // Save autoUpdateCheck setting
         }, () => {
             statusMessage.textContent = '设置已保存！';
             statusMessage.style.color = 'green';
@@ -115,6 +120,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 修改保存按钮的事件监听器，调用统一的 saveSettings 函数
     saveSettingsButton.addEventListener('click', saveSettings);
+
+    // Add event listener for autoUpdateSwitch
+    autoUpdateSwitch.addEventListener('change', saveSettings);
+
+    // Add event listener for enabledSwitch
+    enabledSwitch.addEventListener('change', saveSettings);
+
+    // Add event listener for manualCheckUpdateButton
+    manualCheckUpdateButton.addEventListener('click', () => {
+        console.log('手动检查更新按钮被点击。'); // Add log here
+        chrome.runtime.sendMessage({ action: 'manualCheckForUpdates' }, (response) => {
+            if (response && response.status === 'success') {
+                statusMessage.textContent = '已发送手动更新检查请求！';
+                statusMessage.style.color = 'green';
+                statusMessage.style.opacity = '1';
+                setTimeout(() => {
+                    statusMessage.style.opacity = '0';
+                }, 3000);
+            } else {
+                statusMessage.textContent = '手动更新检查请求失败！';
+                statusMessage.style.color = 'red';
+                statusMessage.style.opacity = '1';
+                setTimeout(() => {
+                    statusMessage.style.opacity = '0';
+                }, 3000);
+            }
+        });
+    });
 
     // 输入框动画效果
     const inputGroups = document.querySelectorAll('.input-group input, .input-group textarea');

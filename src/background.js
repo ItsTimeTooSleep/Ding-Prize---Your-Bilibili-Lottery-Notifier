@@ -21,6 +21,8 @@ const DEFAULT_SETTINGS = {
 
     ],
     lastCheckedTime: 0,
+    autoUpdateCheck: true, // Add this line
+    updateCheckInterval: 24, // hours, for update checks
 };
 
 let blockedUids = [];
@@ -37,7 +39,7 @@ async function loadBlockedUids() {
 
 // 初始化设置
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.get(['enabled', 'checkInterval', 'prizeKeywords', 'blacklistKeywords'], (items) => {
+    chrome.storage.sync.get(['enabled', 'checkInterval', 'prizeKeywords', 'blacklistKeywords', 'autoUpdateCheck', 'updateCheckInterval'], (items) => { // Add 'autoUpdateCheck' and 'updateCheckInterval' here
         if (items.enabled === undefined) {
             chrome.storage.sync.set({ enabled: DEFAULT_SETTINGS.enabled });
         }
@@ -50,8 +52,15 @@ chrome.runtime.onInstalled.addListener(() => {
         if (items.blacklistKeywords === undefined) {
             chrome.storage.sync.set({ blacklistKeywords: DEFAULT_SETTINGS.blacklistKeywords.join('\n') });
         }
+        if (items.autoUpdateCheck === undefined) { // Add this block
+            chrome.storage.sync.set({ autoUpdateCheck: DEFAULT_SETTINGS.autoUpdateCheck });
+        }
+        if (items.updateCheckInterval === undefined) { // Add this block
+            chrome.storage.sync.set({ updateCheckInterval: DEFAULT_SETTINGS.updateCheckInterval });
+        }
         // 创建或更新定时任务
         createAlarm(items.checkInterval || DEFAULT_SETTINGS.checkInterval);
+        createUpdateAlarm(items.autoUpdateCheck || DEFAULT_SETTINGS.autoUpdateCheck, items.updateCheckInterval || DEFAULT_SETTINGS.updateCheckInterval); // Call createUpdateAlarm
     });
 
     loadBlockedUids(); // Load blocked UIDs on install
@@ -69,6 +78,11 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
             // 如果插件被禁用，清除定时任务
             chrome.alarms.clear('checkBiliMessages');
         }
+        if (changes.autoUpdateCheck || changes.updateCheckInterval) { // Handle autoUpdateCheck and updateCheckInterval changes
+            chrome.storage.sync.get(['autoUpdateCheck', 'updateCheckInterval'], (items) => {
+                createUpdateAlarm(items.autoUpdateCheck, items.updateCheckInterval);
+            });
+        }
     }
 });
 
@@ -77,6 +91,17 @@ function createAlarm(intervalInHours) {
     if (intervalInHours > 0) {
         const intervalInMinutes = intervalInHours * 60; // 将小时转换为分钟
         chrome.alarms.create('checkBiliMessages', {
+            delayInMinutes: intervalInMinutes,
+            periodInMinutes: intervalInMinutes
+        });
+    }
+}
+
+function createUpdateAlarm(autoCheckEnabled, intervalInHours) {
+    chrome.alarms.clear('checkExtensionUpdates');
+    if (autoCheckEnabled && intervalInHours > 0) {
+        const intervalInMinutes = intervalInHours * 60;
+        chrome.alarms.create('checkExtensionUpdates', {
             delayInMinutes: intervalInMinutes,
             periodInMinutes: intervalInMinutes
         });
@@ -93,6 +118,25 @@ chrome.alarms.onAlarm.addListener((alarm) => {
                 console.log('插件已禁用，跳过检测。');
             }
         });
+    } else if (alarm.name === 'checkExtensionUpdates') { // New alarm listener for updates
+        chrome.storage.sync.get('autoUpdateCheck', (items) => {
+            if (items.autoUpdateCheck) {
+                console.log('开始检测扩展更新...');
+                checkForUpdates();
+            } else {
+                console.log('自动更新检查已禁用，跳过检测。');
+            }
+        });
+    }
+});
+
+// Listen for messages from options.js for manual update check
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'manualCheckForUpdates') {
+        console.log('收到手动更新检查请求...');
+        checkForUpdates();
+        sendResponse({ status: 'success' });
+        return true; // Indicate that the response is sent asynchronously
     }
 });
 
