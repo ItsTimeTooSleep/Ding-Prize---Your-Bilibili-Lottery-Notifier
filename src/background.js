@@ -17,9 +17,9 @@ const DEFAULT_SETTINGS = {
     ],
     blacklistKeywords: [
         '合集', '临期/速看', 'b站抽奖看这里', '预约成功', '已经通过审核', '你的稿件累计播放达到', '恭喜你完成限时任务', '你的粉丝数达到', '您的稿件《','⭐【精选大奖】⭐总计数','超开心，你终于关注','【假抽奖？】大家一起来判断！本期主角为：','恭喜宝子加入盼盼大家庭俱乐部','恭喜您，成功触发隐藏任务！','用心做视频，没你不行','你来啦~谢谢关注！','感谢关注！可以加我个人',' 感谢伯爵大人的关注，期待与您在', '这里会发布品牌相关动态以及产品资讯', '恭喜宝贝入股成功', '中奖这一块awa', '次点赞，已解锁专属徽章，和大家一起分享你的成就吧！', '假抽奖曝光', '恭喜！你的单稿播放达到', 'B站的小伙伴你好呀！为了提升使用体验，诚邀你参与我们的调研', '认为您是一个宝藏up主，选择成为了您的“原始粉丝”。待您的粉丝突破1000后，TA将升级成为您的“老粉”。往后的up主之路，有TA与您同行', '清一下硬盘', '谢谢你的关注呀，祝你每天都开心', '这里会发布品牌相关动态以及产品资讯', '感谢关注~', '恭喜您发现了宝藏up主', '感谢关注，up会继续为大家更新免费的干货内容', '你预约的视频已上线，快来看看吧'
- // 以后可能把prizekeywords和blacklist单独放到一个文件里，方便管理，和方便切换配置
-
     ],
+     // 以后可能把prizekeywords和blacklist单独放到一个文件里，方便管理，和方便切换配置
+
     lastCheckedTime: 0,
     autoUpdateCheck: true, // Add this line
     updateCheckInterval: 24, // hours, for update checks
@@ -182,11 +182,15 @@ async function sendNotification(message, type = 'success', duration = 3000, noti
 }
 
 async function checkBiliMessages() {
+  try {
     await loadBlockedUids(); // Load blocked UIDs before checking messages
     console.log('开始检测B站私信...');
     const checkingNotificationId = 'bili-checking-notification'; // 定义一个唯一的通知ID
-    sendNotification('正在检测中...', 'info', 0, checkingNotificationId); // 发送“正在检测中...”通知，不自动隐藏
+    sendNotification('正在检测中...', 'info', 0, checkingNotificationId); // 发送"正在检测中..."通知，不自动隐藏
     chrome.runtime.sendMessage({ type: "updateProgress", status: "started", message: "正在初始化检测..." });
+    
+    // 设置检测状态为正在检测
+    chrome.storage.sync.set({ isChecking: true });
 
     // 向 popup.js 发送消息，显示内部通知
     chrome.runtime.sendMessage({ type: "showNotification", message: "正在检测中...", notificationType: "success" });
@@ -259,7 +263,7 @@ async function checkBiliMessages() {
             }
         } catch (error) {
             console.error(`获取会话列表时发生错误，类型 ${type}:`, error.name, error.message, error.stack);
-            chrome.runtime.sendMessage({ type: "updateProgress", status: "error", message: `获取会话列表时发生错误: ${error.message}` });
+            // 错误已经会被外层的 try-catch 捕获并处理，这里不需要重复发送通知
             return [];
         }
     });
@@ -483,6 +487,20 @@ async function checkBiliMessages() {
             }
         });
     });
+  } catch (error) {
+    console.error('检测B站私信时发生严重错误:', error);
+    sendNotification('检测失败', `检测中奖信息时发生错误: ${error.message}`, 'error');
+    chrome.runtime.sendMessage({ type: "updateProgress", status: "error", message: `检测失败: ${error.message}` });
+    chrome.runtime.sendMessage({ type: "hideNotification" });
+    
+    // 确保在出错时也将 isChecking 状态设置为 false
+    chrome.storage.sync.set({ isChecking: false }, () => {
+      console.log(`[Background] 发生错误，isChecking 状态已设置为 false。`);
+    });
+    
+    // 清除"正在检测中..."的通知
+    chrome.notifications.clear('bili-checking-notification');
+  }
 }
 
 // 辅助函数：获取已保存的中奖消息
@@ -596,5 +614,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.runtime.sendMessage({ type: "updateProgress", status: "disabled", message: "插件已禁用。" });
         chrome.runtime.sendMessage({ type: "hideNotification" });
         return true; // Indicates that sendResponse will be called asynchronously
+    }
+});
+
+// 监听来自 options.js 的手动检查更新请求
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'manualCheckForUpdates') {
+        console.log('收到手动检查更新请求');
+        checkForUpdates();
+        sendResponse({ status: 'success' });
+        return true;
     }
 });
