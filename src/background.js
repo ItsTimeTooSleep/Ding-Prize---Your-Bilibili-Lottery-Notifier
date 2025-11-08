@@ -440,6 +440,7 @@ async function checkBiliMessages() {
                 for (const message of msgData.data.messages) {
                     let uniqueMessageId;
                     let parsedContent;
+                    let extractedTitle; // Declare extractedTitle here
 
                     try {
                         parsedContent = JSON.parse(message.content);
@@ -449,9 +450,12 @@ async function checkBiliMessages() {
                             // If no 'id' field in parsed content, use the full content as a fallback unique ID
                             uniqueMessageId = message.content;
                         }
+                        // Calculate extractedTitle after parsedContent is available
+                        extractedTitle = parsedContent.title || parsedContent.item_text || parsedContent.content || message.content;
                     } catch (e) {
                         // If message.content is not JSON, use the full content as unique ID
                         uniqueMessageId = message.content;
+                        extractedTitle = message.content; // Set extractedTitle if not JSON
                     }
 
                     // 检查消息是否已处理
@@ -462,11 +466,11 @@ async function checkBiliMessages() {
 
                     // console.log(`Checking message content: "${message.content}" with keywords: ${currentPrizeKeywords.join(', ')}`);
                     // 检查消息内容是否包含中奖关键词
-                    if (containsPrizeKeywords(message.content, currentPrizeKeywords, currentBlacklistKeywords)) {
+                    if (containsPrizeKeywords(extractedTitle, currentPrizeKeywords, currentBlacklistKeywords)) {
                         console.log(`[Background] 发现潜在中奖消息，内容: ${message.content.substring(0, 100)}...`);
                         console.log(`[Background] 原始 message.content 完整内容:`, message.content);
                         // let parsedContent; // This was declared earlier, no need to redeclare
-                        let extractedTitle = parsedContent.title || parsedContent.item_text || parsedContent.content || message.content;
+                        // REMOVED: let extractedTitle = parsedContent.title || parsedContent.item_text || parsedContent.content || message.content;
                         const originalRawContent = message.content; // Store the original raw content
                         let thumb = '';
 
