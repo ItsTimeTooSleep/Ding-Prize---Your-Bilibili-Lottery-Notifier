@@ -49,6 +49,7 @@
                         <span>手动检查</span>
                     </button>
                 </div>
+                <div id="update-status-message" class="hint" style="margin-top: 10px; opacity: 0;"></div>
                 <div class="hint">及时升级以享受全新的惊喜体验哦</div>
             </div>
 
@@ -73,6 +74,27 @@
                     <label for="prize-keywords">中奖关键词 (每行一个)</label>
                     <textarea id="prize-keywords"></textarea>
                     <div class="hint">插件将检测包含这些关键词的私信消息</div>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <div class="setting-title">
+                    <i class="fas fa-user-slash"></i>
+                    <span>黑名单模式</span>
+                </div>
+                <div class="setting-content-row radio-group">
+                    <label class="radio-container">
+                        <input type="radio" id="default-blacklist-mode" name="blacklist-mode" value="default">
+                        <span class="radio-checkmark"></span>
+                        默认黑名单 (推荐，自动更新)
+                        <p class="hint">自动从线上获取并更新黑名单，无需手动维护。</p>
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" id="manual-blacklist-mode" name="blacklist-mode" value="manual">
+                        <span class="radio-checkmark"></span>
+                        手动模式
+                        <p class="hint">自定义黑名单内容，但需要手动维护。</p>
+                    </label>
                 </div>
             </div>
 

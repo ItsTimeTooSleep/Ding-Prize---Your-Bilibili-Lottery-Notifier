@@ -6,6 +6,8 @@ const PRIZE_SENDER_TYPES = [
     1   // 官方账号
 ];
 
+const DEFAULT_BLACKLIST_URL = 'https://itstimetoosleep.github.io/Ding-Prize---Your-Bilibili-Lottery-Notifier/blacklist.json';
+
 // 默认配置
 const DEFAULT_SETTINGS = {
     enabled: true,
@@ -16,10 +18,11 @@ const DEFAULT_SETTINGS = {
         '奖品', '礼物', '赠品'
     ],
     blacklistKeywords: [
-        '合集', '临期/速看', 'b站抽奖看这里', '预约成功', '已经通过审核', '你的稿件累计播放达到', '恭喜你完成限时任务', '你的粉丝数达到', '您的稿件《','⭐【精选大奖】⭐总计数','超开心，你终于关注','【假抽奖？】大家一起来判断！本期主角为：','恭喜宝子加入盼盼大家庭俱乐部','恭喜您，成功触发隐藏任务！','用心做视频，没你不行','你来啦~谢谢关注！','感谢关注！可以加我个人',' 感谢伯爵大人的关注，期待与您在', '这里会发布品牌相关动态以及产品资讯', '恭喜宝贝入股成功', '中奖这一块awa', '次点赞，已解锁专属徽章，和大家一起分享你的成就吧！', '假抽奖曝光', '恭喜！你的单稿播放达到', 'B站的小伙伴你好呀！为了提升使用体验，诚邀你参与我们的调研', '认为您是一个宝藏up主，选择成为了您的“原始粉丝”。待您的粉丝突破1000后，TA将升级成为您的“老粉”。往后的up主之路，有TA与您同行', '清一下硬盘', '谢谢你的关注呀，祝你每天都开心', '这里会发布品牌相关动态以及产品资讯', '感谢关注~', '恭喜您发现了宝藏up主', '感谢关注，up会继续为大家更新免费的干货内容', '你预约的视频已上线，快来看看吧', '假抽奖实锤', '产品/周边抽奖，新品体验等活动统统都在排期', '恭喜你捉到一直'
+        '合集', '临期/速看', 'b站抽奖看这里', '预约成功', '已经通过审核', '你的稿件累计播放达到', '恭喜你完成限时任务', '你的粉丝数达到', '您的稿件《','⭐【精选大奖】⭐总计数','超开心，你终于关注','【假抽奖？】大家一起来判断！本期主角为：','恭喜宝子加入盼盼大家庭俱乐部','恭喜您，成功触发隐藏任务！','用心做视频，没你不行','你来啦~谢谢关注！','感谢关注！可以加我个人',' 感谢伯爵大人的关注，期待与您在', '这里会发布品牌相关动态以及产品资讯', '恭喜宝贝入股成功', '中奖这一块awa', '已解锁专属徽章，和大家一起分享你的成就吧！', '假抽奖曝光', '恭喜！你的单稿播放达到', 'B站的小伙伴你好呀！为了提升使用体验，诚邀你参与我们的调研', '认为您是一个宝藏up主，选择成为了您的“原始粉丝”。待您的粉丝突破1000后，TA将升级成为您的“老粉”。往后的up主之路，有TA与您同行', '清一下硬盘', '谢谢你的关注呀，祝你每天都开心', '这里会发布品牌相关动态以及产品资讯', '感谢关注~', '恭喜您发现了宝藏up主', '感谢关注，up会继续为大家更新免费的干货内容', '你预约的视频已上线，快来看看吧', '假抽奖实锤', '产品/周边抽奖，新品体验等活动统统都在排期', '恭喜你捉到一直', '【工具人的每日抽奖】第', '【欧耶，抽个十块钱】第', '恭喜你关注到了潜力股', '小可爱你终于关注我啦～\n这里是一个有关瑜伽、冥想、正念生活的频道', '✨hi，你来啦～', '为什么拉黑我？', '假抽奖诈骗关注行为！早日悔改吧！', '早过了开奖日期，你的抽奖忘开啦！', '“卫龙食品官方账号”回应：“存在工作失误”', '本期视频主人公：', '【精选大奖】', 'B站抽奖看这里！'
     ],
      // 以后可能把prizekeywords和blacklist单独放到一个文件里，方便管理，和方便切换配置
-
+    blacklistMode: 'default', // 新增黑名单模式：'default'（默认黑名单）或 'manual'（手动模式）
+    defaultBlacklistUrl: DEFAULT_BLACKLIST_URL, // 默认黑名单的URL
     lastCheckedTime: 0,
     autoUpdateCheck: true, // Add this line
     updateCheckInterval: 24, // hours, for update checks
@@ -27,6 +30,11 @@ const DEFAULT_SETTINGS = {
 
 let blockedUids = [];
 
+/**
+ * @function loadBlockedUids
+ * @description 从 chrome.storage.sync 中加载被屏蔽的用户ID列表。
+ * @returns {Promise<void>} 一个Promise，在加载完成后解决。
+ */
 async function loadBlockedUids() {
     return new Promise((resolve) => {
         chrome.storage.sync.get('blockedUids', (items) => {
@@ -35,6 +43,31 @@ async function loadBlockedUids() {
             resolve();
         });
     });
+}
+
+/**
+ * @function fetchDefaultBlacklist
+ * @description 从预设URL获取默认黑名单。
+ * @returns {Promise<string[]>} 一个Promise，解决为黑名单关键词数组。
+ */
+async function fetchDefaultBlacklist() {
+    try {
+        const response = await fetch(DEFAULT_BLACKLIST_URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        // 确保获取到的数据是对象，并且包含一个名为 blacklistKeywords 的字符串数组
+        if (data && typeof data === 'object' && Array.isArray(data.blacklistKeywords) && data.blacklistKeywords.every(item => typeof item === 'string')) {
+            return data.blacklistKeywords;
+        } else {
+            console.error('[Background] Fetched blacklist is not a valid object with a string array for blacklistKeywords.', data);
+            return [];
+        }
+    } catch (error) {
+        console.error('[Background] Failed to fetch default blacklist:', error);
+        return [];
+    }
 }
 
 // 初始化设置
@@ -58,13 +91,54 @@ chrome.runtime.onInstalled.addListener(() => {
         if (items.updateCheckInterval === undefined) { // Add this block
             chrome.storage.sync.set({ updateCheckInterval: DEFAULT_SETTINGS.updateCheckInterval });
         }
+        // 新增黑名单模式和内容初始化
+        if (items.blacklistMode === undefined) {
+            chrome.storage.sync.set({ blacklistMode: DEFAULT_SETTINGS.blacklistMode });
+        }
+        if (items.blacklistKeywords === undefined) {
+            // 如果是默认模式，则从URL获取黑名单
+            if (DEFAULT_SETTINGS.blacklistMode === 'default') {
+                fetchDefaultBlacklist().then(blacklist => {
+                    chrome.storage.sync.set({ blacklistKeywords: blacklist.join('\n'), defaultBlacklistKeywords: blacklist.join('\n') });
+                    console.log('[Background] Default blacklist fetched and set on install.');
+                });
+            } else {
+                // 如果是手动模式，则初始化为空
+                chrome.storage.sync.set({ blacklistKeywords: DEFAULT_SETTINGS.blacklistKeywords.join('\n') });
+            }
+        }
         // 创建或更新定时任务
         createAlarm(items.checkInterval || DEFAULT_SETTINGS.checkInterval);
         createUpdateAlarm(items.autoUpdateCheck || DEFAULT_SETTINGS.autoUpdateCheck, items.updateCheckInterval || DEFAULT_SETTINGS.updateCheckInterval); // Call createUpdateAlarm
     });
 
     loadBlockedUids(); // Load blocked UIDs on install
-    checkForUpdates(); // Check for updates on install
+    checkForUpdates().then(result => {
+        // 将安装时的更新检查结果发送给所有打开的 options.html 页面
+        chrome.runtime.sendMessage({ type: "autoUpdateCheckResult", ...result });
+        // 如果发现新版本，则打开 options 页面
+        if (result.status === 'new_version_available') {
+            chrome.storage.local.set({
+                newVersionAvailable: true,
+                latestVersion: result.latestVersion,
+                releaseUrl: result.releaseUrl,
+                releaseNotes: result.releaseNotes,
+                releaseDate: result.releaseDate,
+                releaseSize: result.releaseSize
+            }, () => {
+                chrome.windows.create({
+                        url: chrome.runtime.getURL('src/update.html'),
+                        type: 'popup',
+                        width: 450,
+                        height: 600
+                    });
+            });
+        } else {
+            chrome.storage.local.set({
+                newVersionAvailable: false
+            });
+        }
+    }); // Check for updates on install
 });
 
 // 监听设置变化，更新定时任务
@@ -83,9 +157,25 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
                 createUpdateAlarm(items.autoUpdateCheck, items.updateCheckInterval);
             });
         }
+        // 监听黑名单模式变化，如果切换到默认模式且黑名单为空，则尝试获取
+        if (changes.blacklistMode && changes.blacklistMode.newValue === 'default') {
+            chrome.storage.sync.get('blacklistKeywords', (items) => {
+                if (!items.blacklistKeywords || items.blacklistKeywords.trim() === '') {
+                    fetchDefaultBlacklist().then(blacklist => {
+                        chrome.storage.sync.set({ blacklistKeywords: blacklist.join('\n'), defaultBlacklistKeywords: blacklist.join('\n') });
+                        console.log('[Background] Switched to default mode, fetched and set blacklist.');
+                    });
+                }
+            });
+        }
     }
 });
 
+/**
+ * @function createAlarm
+ * @description 创建或更新B站私信检测的定时任务。
+ * @param {number} intervalInHours - 检测间隔，单位小时。
+ */
 function createAlarm(intervalInHours) {
     chrome.alarms.clear('checkBiliMessages');
     if (intervalInHours > 0) {
@@ -97,6 +187,12 @@ function createAlarm(intervalInHours) {
     }
 }
 
+/**
+ * @function createUpdateAlarm
+ * @description 创建或更新扩展更新检测的定时任务。
+ * @param {boolean} autoCheckEnabled - 是否启用自动更新检测。
+ * @param {number} intervalInHours - 更新检测间隔，单位小时。
+ */
 function createUpdateAlarm(autoCheckEnabled, intervalInHours) {
     chrome.alarms.clear('checkExtensionUpdates');
     if (autoCheckEnabled && intervalInHours > 0) {
@@ -122,7 +218,32 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         chrome.storage.sync.get('autoUpdateCheck', (items) => {
             if (items.autoUpdateCheck) {
                 console.log('开始检测扩展更新...');
-                checkForUpdates();
+                checkForUpdates().then(result => {
+                    // 将自动更新检查的结果发送给所有打开的 options.html 页面
+                    chrome.runtime.sendMessage({ type: "autoUpdateCheckResult", ...result });
+                    // 如果发现新版本，则打开 options 页面
+                    if (result.status === 'new_version_available') {
+                        chrome.storage.local.set({
+                            newVersionAvailable: true,
+                            latestVersion: result.latestVersion,
+                            releaseUrl: result.releaseUrl,
+                            releaseNotes: result.releaseNotes,
+                            releaseDate: result.releaseDate,
+                            releaseSize: result.releaseSize
+                        }, () => {
+                            chrome.windows.create({
+                                url: chrome.runtime.getURL('src/update.html'),
+                                type: 'popup',
+                                width: 600,
+                                height: 400
+                            });
+                        });
+                    } else {
+                        chrome.storage.local.set({
+                            newVersionAvailable: false
+                        });
+                    }
+                });
             } else {
                 console.log('自动更新检查已禁用，跳过检测。');
             }
@@ -134,8 +255,12 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'manualCheckForUpdates') {
         console.log('收到手动更新检查请求...');
-        checkForUpdates();
-        sendResponse({ status: 'success' });
+        checkForUpdates().then(result => {
+            sendResponse(result);
+        }).catch(error => {
+            console.error('手动更新检查失败:', error);
+            sendResponse({ status: 'check_failed', message: error.message });
+        });
         return true; // Indicate that the response is sent asynchronously
     }
 });
@@ -182,6 +307,18 @@ async function sendNotification(message, type = 'success', duration = 3000, noti
 }
 
 async function checkBiliMessages() {
+    // 在检测B站私信前，检查黑名单模式并自动更新黑名单
+    const settings = await new Promise(resolve => chrome.storage.sync.get(['blacklistMode', 'blacklistKeywords'], resolve));
+    if (settings.blacklistMode === 'default') {
+        const defaultBlacklist = await fetchDefaultBlacklist();
+        const currentBlacklist = settings.blacklistKeywords.split('\n');
+        // 只有当默认黑名单与当前存储的黑名单不同时才更新
+        if (JSON.stringify(defaultBlacklist.sort()) !== JSON.stringify(currentBlacklist.sort())) {
+            await new Promise(resolve => chrome.storage.sync.set({ blacklistKeywords: defaultBlacklist.join('\n'), defaultBlacklistKeywords: defaultBlacklist.join('\n') }, resolve));
+            console.log('[Background] Default blacklist automatically updated before checking messages.');
+        }
+    }
+
   try {
     await loadBlockedUids(); // Load blocked UIDs before checking messages
     console.log('开始检测B站私信...');
@@ -614,15 +751,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.runtime.sendMessage({ type: "updateProgress", status: "disabled", message: "插件已禁用。" });
         chrome.runtime.sendMessage({ type: "hideNotification" });
         return true; // Indicates that sendResponse will be called asynchronously
-    }
-});
-
-// 监听来自 options.js 的手动检查更新请求
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'manualCheckForUpdates') {
-        console.log('收到手动检查更新请求');
-        checkForUpdates();
-        sendResponse({ status: 'success' });
-        return true;
     }
 });

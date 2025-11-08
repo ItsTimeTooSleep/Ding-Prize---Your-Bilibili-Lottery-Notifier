@@ -38,52 +38,56 @@ function getCurrentVersion() {
  */
 async function checkForUpdates() {
     console.log('[UpdateChecker] Checking for updates...');
-    const latestRelease = await fetchLatestRelease();
-    const currentVersion = getCurrentVersion();
+    try {
+        const latestRelease = await fetchLatestRelease();
+        const currentVersion = getCurrentVersion();
 
-    if (latestRelease && latestRelease.tag_name) {
-        const latestVersion = latestRelease.tag_name.replace(/^v/, ''); // Remove 'v' prefix if present
-        console.log(`[UpdateChecker] Current version: ${currentVersion}, Latest version: ${latestVersion}`);
+        if (latestRelease && latestRelease.tag_name) {
+            const latestVersion = latestRelease.tag_name.replace(/^v/, ''); // Remove 'v' prefix if present
+            console.log(`[UpdateChecker] Current version: ${currentVersion}, Latest version: ${latestVersion}`);
 
-        // Simple version comparison (e.g., 1.0.0 vs 1.0.1)
-        // This can be improved for more complex versioning schemes
-        const isNewVersionAvailable = compareVersions(latestVersion, currentVersion) > 0;
+            const isNewVersionAvailable = compareVersions(latestVersion, currentVersion) > 0;
 
-        if (isNewVersionAvailable) {
-            console.log('[UpdateChecker] New version available!');
-            chrome.storage.local.set({
-                newVersionAvailable: true,
-                latestVersion: latestVersion,
-                releaseUrl: latestRelease.html_url,
-                releaseNotes: latestRelease.body,
-                releaseDate: latestRelease.published_at,
-                releaseSize: latestRelease.assets && latestRelease.assets.length > 0 ? latestRelease.assets[0].size : 0
-            }, () => {
-                // Open update page if this is a new version
-                chrome.windows.create({
-                    url: chrome.runtime.getURL('src/update.html'),
-                    type: 'popup',
-                    width: 450,
-                    height: 600
+            if (isNewVersionAvailable) {
+                console.log('[UpdateChecker] New version available!');
+                await chrome.storage.local.set({
+                    newVersionAvailable: true,
+                    latestVersion: latestVersion,
+                    releaseUrl: latestRelease.html_url,
+                    releaseNotes: latestRelease.body,
+                    releaseDate: latestRelease.published_at,
+                    releaseSize: latestRelease.assets && latestRelease.assets.length > 0 ? latestRelease.assets[0].size : 0
                 });
-            });
+                return { status: 'new_version_available', latestVersion: latestVersion, releaseUrl: latestRelease.html_url };
+            } else {
+                console.log('[UpdateChecker] No new version available.');
+                await chrome.storage.local.set({
+                    newVersionAvailable: false,
+                    latestVersion: currentVersion,
+                    releaseUrl: '',
+                    releaseNotes: ''
+                });
+                return { status: 'no_update', currentVersion: currentVersion };
+            }
         } else {
-            console.log('[UpdateChecker] No new version available.');
-            chrome.storage.local.set({
+            console.log('[UpdateChecker] Could not retrieve latest release information.');
+            await chrome.storage.local.set({
                 newVersionAvailable: false,
                 latestVersion: currentVersion,
                 releaseUrl: '',
                 releaseNotes: ''
             });
+            return { status: 'check_failed', message: '无法获取最新版本信息。' };
         }
-    } else {
-        console.log('[UpdateChecker] Could not retrieve latest release information.');
-        chrome.storage.local.set({
+    } catch (error) {
+        console.error('[UpdateChecker] Error checking for updates:', error);
+        await chrome.storage.local.set({
             newVersionAvailable: false,
-            latestVersion: currentVersion,
+            latestVersion: getCurrentVersion(),
             releaseUrl: '',
             releaseNotes: ''
         });
+        return { status: 'check_failed', message: `检查更新时发生错误: ${error.message}` };
     }
 }
 

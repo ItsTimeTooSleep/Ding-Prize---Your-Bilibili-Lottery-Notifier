@@ -137,7 +137,7 @@ h1 {
 
 .setting-content-row {
     display: flex;
-    align-items: center;
+    /* align-items: center; */ /* 移除此行以避免垂直居中 */
     gap: 15px; /* Space between switch and button */
     margin-bottom: 15px;
 }
@@ -386,9 +386,78 @@ button i {
     color: var(--text-secondary);
 }
 
-.copyright-icon {
-    width: 16px;
-    height: 16px;
-    margin-left: 5px;
-    vertical-align: middle;
+
+/* Radio Group Styles */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px; /* 设置合适的字体大小 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    transition: var(--transition);
+}
+
+.radio-container:hover input ~ .radio-checkmark {
+    background-color: #ccc;
+}
+
+.radio-container input:checked ~ .radio-checkmark {
+    background-color: var(--bilibili-blue);
+    border-color: var(--bilibili-blue);
+}
+
+.radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container input:checked ~ .radio-checkmark:after {
+    display: block;
+}
+
+.radio-container .radio-checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+}
+
+.radio-container .hint {
+    margin-top: 5px;
+    margin-left: 0;
+    font-size: 12px;
+    color: var(--text-secondary);
 }
