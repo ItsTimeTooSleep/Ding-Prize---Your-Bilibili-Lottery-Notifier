@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Ding-Prize",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "帮你盯紧海量私信，中奖通知一秒闪现！",
   "icons": {
     "16": "assets/icons/icon16.png",
